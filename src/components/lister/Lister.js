@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import styles from './lister.module.css'
-
+import Card from '../card/Card';
 import PropTypes from 'prop-types'
 
 
 
-export default class Filter extends Component {
+export default class Lister extends Component {
 
     constructor(props) {
         super(props);
@@ -20,37 +20,18 @@ export default class Filter extends Component {
     };
 
     render() {
+        let arr=[1,2,3,5,7,8,9,0,3,3,2,2,3,4,66,6,6,6,6,6,6,6];
+        let elements = [];
+
+        for(let element of arr){
+            elements.push(<Card value={element}/>)
+        }
         return (
+            
             <div className={styles.container}>
-                <h3>Lister</h3>
-                <label>
-                    <input
-                        type="radio"
-                        name="filter"
-                        className="form-check-input"
-                        value="characters"
-                        checked={this.state.selectedOption === "characters"}
-                        onChange={this.handleOptionChange} /> Characters
-                </label>
-                <label>
-                    <input
-                        type="radio"
-                        name="filter"
-                        className="form-check-input"
-                        value="locations"
-                        checked={this.state.selectedOption === 'locations'}
-                        onChange={this.handleOptionChange} /> Locations
-                </label>
-                <label>
-                    <input
-                        type="radio"
-                        name= "filter"
-                        value="episodes"
-                        className="form-check-input"
-                        checked={this.state.selectedOption === 'episodes'}
-                        onChange={this.handleOptionChange} /> Episodes
-                </label>
+                {elements}
             </div>
+
         )
 
     }
