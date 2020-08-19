@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './home.module.css';
+import Filter from '../filter/Filter';
+import Search from '../search/Search';
 
 export default function Home() {
 
@@ -7,9 +9,12 @@ export default function Home() {
 
     return (
         <div style={{height:"100vh"}}>
+            <div className={styles.searcher}>
+                <Search />
+            </div>
             <div  className={styles.container}>
                 <div className={styles.side_filter}>
-                    Filter
+                    <Filter />
                 </div>
                 <h2> Home page</h2>
                 <p>This is a paragraph</p>

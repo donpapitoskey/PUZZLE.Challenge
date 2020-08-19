@@ -1,12 +1,35 @@
-.container{
-    height: 95%;
+.searcher{
+    height: 10%;
     width: 100%;
     display: flex;
-    
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    background-color: turquoise;
+}
+
+.container{
+    height: 85%;
+    width: 100%;
+    display: flex;
     flex-direction: row;
     align-items: center;
     background-color: thistle;
 }
+
+
+.side_filter {
+    width: 30%;
+    max-width: 280px;
+    height: 100%;
+    display: flex;
+    
+    flex-direction: column;
+    
+    align-items: center;
+    background-color: yellowgreen;
+}
+
 
 .signature{
     width: 100%;
@@ -16,16 +39,4 @@
     justify-content: center;
     align-items: center;
     background-color: teal;
-}
-
-.side_filter {
-    width: 30%;
-    max-width: 280px;
-    height: 100%;
-    display: flex;
-    
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: yellowgreen;
 }
