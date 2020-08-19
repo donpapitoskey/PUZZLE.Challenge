@@ -22,7 +22,7 @@ export default class Card extends Component {
     render() {
         
         return (
-            <div className={styles.container}>
+            <div className={styles.container} onMouseOver={this.handleMouseOver}>
                 <h3>Card</h3>
                 <label>
                     Image

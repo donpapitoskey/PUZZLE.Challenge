@@ -4,3 +4,7 @@
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
+.container.hover .actions{
+    opacity: 1;
+}
