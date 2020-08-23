@@ -8,5 +8,6 @@
     align-content: flex-start;
     flex-wrap: wrap;
     margin: 0 auto;
+    overflow-y: scroll;
     background-color: rgb(130, 50, 205);
 }

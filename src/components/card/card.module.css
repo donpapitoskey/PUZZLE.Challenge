@@ -3,8 +3,11 @@
     padding-right: 15px;
     padding-top: 15px;
     padding-bottom: 15px;
+    background-color: rgb(85, 85, 85);
 }
 
-.container.hover .actions{
-    opacity: 1;
+.container:hover {
+    
+    cursor: pointer;
+    background-color: rgb(39, 39, 39);
 }

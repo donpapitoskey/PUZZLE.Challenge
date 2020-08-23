@@ -18,12 +18,6 @@ export default class Search extends Component {
             selecterOption : "characters"
         }; 
     }
-    handleOptionChange = changeEvent => {
-        this.setState({
-            selectedOption: changeEvent.target.value
-        });
-    };
-
     render (){
         return (
             <div className={styles.container}>

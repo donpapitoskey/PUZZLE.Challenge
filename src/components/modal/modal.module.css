@@ -1,0 +1,31 @@
+.Modal {
+  position: fixed;
+  z-index: 500;
+  
+  width: 100%;
+  
+  
+  padding: 16px;
+  left: 0%;
+  top: 0%;
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+}
+
+.content{
+  position: absolute;
+  z-index: 700;
+  background-color: rgb(51, 50, 50);
+  width: 90%;
+  height: 90vh;
+  
+  box-shadow: 1px 1px 1px black;
+  padding: 16px;
+  left: 5vw;
+  top: 5vh;
+  
+  box-sizing: border-box;
+  transition: all 0.3s ease-out;
+}
+
+
