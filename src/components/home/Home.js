@@ -4,6 +4,7 @@ import Filter from '../filter/Filter';
 import Search from '../search/Search';
 import Lister from '../lister/Lister';
 import Pages from '../pages/Pages';
+import store from '../../redux/store';
 
 export default function Home() {
 
@@ -19,7 +20,7 @@ export default function Home() {
                     <Filter />
                 </div>
                 <div className={styles.mainBlock}>
-                    <Lister />
+                    <Lister store={store}/>
                     <Pages />
 
                 </div>

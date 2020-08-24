@@ -1,27 +1,20 @@
 import React, { Component } from 'react'
 import styles from './lister.module.css'
 import Card from '../card/Card';
-
-import PropTypes from 'prop-types'
-
+import {connect}from 'react-redux'; //conectar componente con redux
 
 
-export default class Lister extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            selecterOption: "characters"
-        };
-    }
-    handleOptionChange = changeEvent => {
-        this.setState({
-            selectedOption: changeEvent.target.value
-        });
-    };
+
+class Lister extends Component {
+
+
+
+
 
     render() {
-        let arr=[1,2,3,5,7,8,9,0,3,3,2,2,3,4,66,6,6,6,6,6,6,6];
+        console.log(this.props.search.typeOfSearch)
+        let arr=[1,2,3,5,7,8];
         let elements = [];
 
         for(let element of arr){
@@ -38,6 +31,9 @@ export default class Lister extends Component {
     }
 
 
-}
+};
+
+
+export default connect()(Lister)  //sacar datos
 
 

@@ -71,9 +71,9 @@ export class Auxcard extends Component {
         return (
             <div className={styles.container} onClick={this.modalHandler}>
                 <h3>Card</h3>
-                <label>
-                    Image
-                </label>
+                <img src ={this.props.image}>
+                    
+                </img>
                 
             </div>
         )
