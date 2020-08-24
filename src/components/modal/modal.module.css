@@ -18,7 +18,8 @@
   background-color: rgb(51, 50, 50);
   width: 90%;
   height: 90vh;
-  
+  display: flex;
+  flex-direction: row;
   box-shadow: 1px 1px 1px black;
   padding: 16px;
   left: 5vw;
@@ -28,4 +29,32 @@
   transition: all 0.3s ease-out;
 }
 
+.leftSection{
+  width:50%;
+  background-color: lemonchiffon;
+  display: flex;
+  flex-direction: column;
+}
 
+.rightSection{
+  width: 50%;
+  background-color: lightgreen;
+  margin-left: 15px;
+  flex-direction: column;
+}
+
+
+
+.aux_container{
+  width: 100%;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  
+  
+}
