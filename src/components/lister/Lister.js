@@ -13,7 +13,7 @@ class Lister extends Component {
 
 
     render() {
-        console.log(this.props.search.typeOfSearch)
+        console.log(this.props.episodes)
         let arr=[1,2,3,5,7,8];
         let elements = [];
 
@@ -33,7 +33,12 @@ class Lister extends Component {
 
 };
 
+function mapStateToProps(store){
+    return {
+        episodes: store.search.array
+    }
+};
 
-export default connect()(Lister)  //sacar datos
+export default connect(mapStateToProps)(Lister)  //sacar datos
 
 

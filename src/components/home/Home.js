@@ -20,7 +20,7 @@ export default function Home() {
                     <Filter />
                 </div>
                 <div className={styles.mainBlock}>
-                    <Lister store={store}/>
+                    <Lister/>
                     <Pages />
 
                 </div>
