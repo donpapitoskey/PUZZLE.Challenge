@@ -3,8 +3,10 @@ import ApolloClient, { gql } from 'apollo-boost'
 //constants
 let initialData = {
     fetching: false,
-    array: [],
-    typeOfSearch: ''
+    arr: [],
+    info:{},
+    typeOfSearch: 'characters',
+    searchingPage: 2
 }
 
 let client = new ApolloClient({
@@ -16,6 +18,7 @@ const REQUEST_SUCCESS = "REQUEST_SUCCESS"
 const REQUEST_ERROR = "REQUEST_ERROR"
 
 const FILTER_CHANGED = "FILTER_CHANGED"
+const PAGE_CHANGED = "PAGE_CHANGED"
 
 //Reducer
 
@@ -26,9 +29,11 @@ export default function reducer(state = initialData, action) {
         case REQUEST_ERROR:
             return { ...state, fetching: false, error: action.payload }
         case REQUEST_SUCCESS:
-            return { ...state, fetching: false, array: action.payload }
-            case FILTER_CHANGED:
-                return {...state, typeOfSearch: action.payload}
+            return { ...state, fetching: false, arr: action.payload.results, info: action.payload.info }
+        case FILTER_CHANGED:
+            return {...state, typeOfSearch: action.payload}
+        case PAGE_CHANGED:
+            return {...state,searchingPage: action.payload}
         default:
             return state
     }
@@ -38,9 +43,20 @@ export default function reducer(state = initialData, action) {
 
 
 //Actions 
+export let setPageAction = (pageNum) => (dispatch,getState) => {
+
+
+    dispatch({
+        type: PAGE_CHANGED,
+        payload: pageNum
+    })
+
+
+}
+
 export let setFilterAction = (newFilter) => (dispatch, getState) => {
     
-    console.log("this is the new filter"+ newFilter)
+    
     dispatch({
         type: FILTER_CHANGED,
         payload: newFilter
@@ -55,7 +71,7 @@ export function getSearchAction() { // action creator
         let typeOfSearch =  "episodes";
         let query = gql`
         query {
-            ${typeOfSearch}(filter:{name:"a"}){
+            ${typeOfSearch}(filter:{name:""}){
             info {
               count
                 pages
@@ -82,17 +98,17 @@ export function getSearchAction() { // action creator
             query
         })
             .then(({ data }) => {
-                console.log(data);
+                //console.log(data);
                 dispatch({
                     type: REQUEST_SUCCESS,
-                    payload: data.episodes.results
+                    payload: data.episodes
                 })
             })
             .catch((err) => {
                 console.log(err)
                 dispatch({
                     type: REQUEST_ERROR,
-                    payload: err.response.message
+                    payload: err
                 })
             })
 

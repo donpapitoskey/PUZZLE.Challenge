@@ -3,11 +3,12 @@ import React, { Component } from 'react'
 import styles from './pages.module.css'
 import Pagination from '@material-ui/lab/Pagination'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import { setPageAction} from '../../redux/searchDuck';
 
 
 
-
-export default class Pages extends Component {
+class Pages extends Component {
 
     constructor(props) {
         super(props);
@@ -15,21 +16,23 @@ export default class Pages extends Component {
             selecterOption: "characters"
         };
     }
-    doSomething = (props) => {
-
+    handleChange = (props,value) => {
+        console.log(value)
+        this.props.setPageAction(value);
     }
 
     render() {
         return (
             <div className={styles.container}>
                 <Pagination 
-                count={20} 
-                defaultPage={1}
+                count={this.props.info.pages} 
+                
                 shape={'round'}
                 siblingCount={2}
-                 boundaryCount={1}
-                 onClick={this.doSomething}
-                 variant="outlined" />
+                boundaryCount={1}
+                page={this.props.page}
+                onChange={this.handleChange}
+                variant="outlined" />
 
 
             </div>
@@ -39,3 +42,12 @@ export default class Pages extends Component {
 
 
 }
+function mapStateToProps(store) {
+    return {
+        info: store.search.info,
+        page: store.search.searchingPage
+    }
+}
+
+
+export default connect(mapStateToProps,{setPageAction})(Pages)
