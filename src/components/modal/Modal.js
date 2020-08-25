@@ -11,8 +11,8 @@ class modal extends Component {
   render() {
     let arr = [1, 6, 6, 6, 6];
     let elementos = [];
-
-    for (let element of this.props.chars) {
+    console.log(this.props.value)
+    for (let element of this.props.value.characters.slice(0,5)) {
       elementos.push(<Auxcard value={element} />)
     }
 
@@ -29,9 +29,9 @@ class modal extends Component {
             infoCharModule
         </div>
           <div className={classes.rightSection}>
-            <div>close</div>
-            <div>entity name</div>
-            <div>data title: data</div>
+      <h2>{this.props.value.name}</h2>
+      <h3> Creation date: {this.props.value.created}</h3>
+      <h3>{this.props.value.episode}</h3>
             <div> Characters</div>
             <div className={classes.aux_container}>
                 

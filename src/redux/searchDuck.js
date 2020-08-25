@@ -76,9 +76,10 @@ export function getSearchAction() { // action creator
                 })
             })
             .catch((err) => {
+                console.log(err)
                 dispatch({
                     type: REQUEST_ERROR,
-                    payload: err.responde.message
+                    payload: err.response.message
                 })
             })
 

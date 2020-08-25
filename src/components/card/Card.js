@@ -30,11 +30,13 @@ export default class Card extends Component {
         
         return (
             <div className={styles.container} onClick={this.modalHandler}>
-                <h3>Card</h3>
+                
                 <label>
-                    {this.props.value.name}
+                    <h4> {this.props.value.name} </h4> 
+                    <h4>{this.props.value.created}</h4>
+                    <p>{this.props.episode}</p>
                 </label>
-                <Modal show = { this.state.modalToggle} modalClosed={this.modalHandler} chars={this.props.value.characters}>
+                <Modal show = { this.state.modalToggle} modalClosed={this.modalHandler} value={this.props.value} chars={this.props.value.characters}>
                     
                 </Modal>
             </div>

@@ -13,11 +13,12 @@ class Lister extends Component {
 
 
     render() {
-        console.log(this.props.episodes)
+        console.log(this.props.episodes.array)
         let elements = [];
 
         for(let element of this.props.episodes.array){
             elements.push(<Card value={element}/>)
+            
         }
         return (
             
