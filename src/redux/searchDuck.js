@@ -50,6 +50,8 @@ export function getSearchAction() { // action creator
             }
             results{
               name
+              created
+              episode
               characters{
                 name
               }

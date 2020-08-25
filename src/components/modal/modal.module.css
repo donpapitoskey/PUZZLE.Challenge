@@ -41,6 +41,7 @@
   background-color: lightgreen;
   margin-left: 15px;
   flex-direction: column;
+  overflow-y: scroll;
 }
 
 

@@ -14,10 +14,9 @@ class Lister extends Component {
 
     render() {
         console.log(this.props.episodes)
-        let arr=[1,2,3,5,7,8];
         let elements = [];
 
-        for(let element of arr){
+        for(let element of this.props.episodes.array){
             elements.push(<Card value={element}/>)
         }
         return (
@@ -35,7 +34,7 @@ class Lister extends Component {
 
 function mapStateToProps(store){
     return {
-        episodes: store.search.array
+        episodes: store.search
     }
 };
 

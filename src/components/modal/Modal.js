@@ -12,7 +12,7 @@ class modal extends Component {
     let arr = [1, 6, 6, 6, 6];
     let elementos = [];
 
-    for (let element of arr) {
+    for (let element of this.props.chars) {
       elementos.push(<Auxcard value={element} />)
     }
 

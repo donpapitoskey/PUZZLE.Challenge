@@ -32,9 +32,9 @@ export default class Card extends Component {
             <div className={styles.container} onClick={this.modalHandler}>
                 <h3>Card</h3>
                 <label>
-                    Image
+                    {this.props.value.name}
                 </label>
-                <Modal show = { this.state.modalToggle} modalClosed={this.modalHandler}>
+                <Modal show = { this.state.modalToggle} modalClosed={this.modalHandler} chars={this.props.value.characters}>
                     
                 </Modal>
             </div>
@@ -70,10 +70,9 @@ export class Auxcard extends Component {
         
         return (
             <div className={styles.container} onClick={this.modalHandler}>
-                <h3>Card</h3>
-                <img src ={this.props.image}>
-                    
-                </img>
+                
+                
+        <h3>{this.props.value.name}</h3>
                 
             </div>
         )
