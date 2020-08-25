@@ -1,25 +1,27 @@
 import React, { Component } from 'react'
 import styles from './filter.module.css'
-
-import PropTypes from 'prop-types'
-
-
+import {connect}from 'react-redux'; //conectar componente con redux
+import {setFilterAction} from '../../redux/searchDuck';
 
 
 
 
-export default class Filter extends Component {
+
+
+class Filter extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            selecterOption: "characters"
+            selectedOption: "characters"
         };
+        this.props.setFilterAction(this.state.selectedOption)
     }
     handleOptionChange = changeEvent => {
         this.setState({
             selectedOption: changeEvent.target.value
         });
+        this.props.setFilterAction(changeEvent.target.value);
     };
 
     render() {
@@ -61,3 +63,10 @@ export default class Filter extends Component {
 
 }
 
+function mapStateToProps (store){
+    return {
+        filterOption: store.search.typeOfSearch
+    }
+};
+
+export default connect(mapStateToProps,{setFilterAction})(Filter);
