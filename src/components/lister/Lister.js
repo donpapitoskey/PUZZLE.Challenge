@@ -24,7 +24,9 @@ class Lister extends Component {
                 value={element} 
                 name={element.name} 
                 episode={element.episode}
-                created= {element.created}/>)
+                created= {element.created}
+                type ={ element.type}
+                dimension = { element.dimension}/>)
             
         }
         

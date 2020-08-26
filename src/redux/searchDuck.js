@@ -20,10 +20,13 @@ const REQUEST_ERROR = "REQUEST_ERROR"
 const FILTER_CHANGED = "FILTER_CHANGED"
 const PAGE_CHANGED = "PAGE_CHANGED"
 
+const ERASE_STORE = "ERASE_STORE"
 //Reducer
 
 export default function reducer(state = initialData, action) {
     switch (action.type) {
+        case ERASE_STORE:
+            return { ...state, arr: action.payload }
         case REQUEST:
             return { ...state, fetching: true } //lo que devuelvo
         case REQUEST_ERROR:
@@ -43,6 +46,14 @@ export default function reducer(state = initialData, action) {
 
 
 //Actions 
+
+export let eraseStoreAction = () => (dispatch, getState) => {
+    dispatch({
+        type: ERASE_STORE,
+        payload: []
+    })
+}
+
 export let setPageAction = (pageNum) => (dispatch, getState) => {
 
 
@@ -70,9 +81,11 @@ export function getSearchAction() { // action creator
         //return 
 
         let { typeOfSearch, searchingPage } = getState().search;
+        console.log(typeOfSearch)
         let requestProps = ``
         switch (typeOfSearch) {
             case "episodes":
+
                 requestProps =
                     `
                         name
@@ -86,6 +99,30 @@ export function getSearchAction() { // action creator
                 break
             case "locations":
                 requestProps =
+                    `
+                        name
+                        type
+                        dimension
+                        residents{
+                            name
+                        }
+              
+                    `
+                break;
+                case "characters":
+                    requestProps =
+                    `
+                        name
+                        type
+                        dimension
+                        residents{
+                            name
+                        }
+              
+                    `
+                break;
+                default:
+                    requestProps =
                     `
                         name
                         type
@@ -124,11 +161,21 @@ export function getSearchAction() { // action creator
             query
         })
             .then(({ data }) => {
-                //console.log(data);
-                dispatch({
-                    type: REQUEST_SUCCESS,
-                    payload: data.episodes
-                })
+                console.log(data);
+                switch (typeOfSearch) {
+                    case "episodes":
+                        dispatch({
+                            type: REQUEST_SUCCESS,
+                            payload: data.episodes
+                        })
+                        break
+                    case "locations":
+                        dispatch({
+                            type: REQUEST_SUCCESS,
+                            payload: data.locations
+                        })
+                }
+
             })
             .catch((err) => {
                 console.log(err)

@@ -34,12 +34,14 @@ export default class Card extends Component {
                 <label>
                     <h4> {this.props.name ? this.props.name : null} </h4> 
                     <h4>{this.props.created ? this.props.created : null}</h4>
+                    <h4>{this.props.type ? this.props.type : null}</h4>
                     <p>{this.props.episode ? this.props.episode : null}</p>
+                    <p>{this.props.dimension ? this.props.dimension : null}</p>
                 </label>
                 <Modal show = { this.state.modalToggle}
                 modalClosed={this.modalHandler} 
                 value={this.props.value} 
-                chars={this.props.value.characters}>
+                chars={this.props.value.characters ? this.props.value.characters : this.props.value.residents}>
                     
                 </Modal>
             </div>
@@ -53,7 +55,9 @@ export default class Card extends Component {
 Card.propTypes = {
     name: PropTypes.string.isRequired,
     created: PropTypes.string,
-    episode: PropTypes.string
+    episode: PropTypes.string,
+    type: PropTypes.string,
+    dimension: PropTypes.string
 }
 
 export class Auxcard extends Component {

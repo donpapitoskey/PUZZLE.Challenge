@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './filter.module.css'
 import {connect}from 'react-redux'; //conectar componente con redux
-import {setFilterAction} from '../../redux/searchDuck';
+import {setFilterAction, getSearchAction} from '../../redux/searchDuck';
 
 
 
@@ -14,6 +14,7 @@ class Filter extends Component {
     handleOptionChange = changeEvent => {
        
         this.props.setFilterAction(changeEvent.target.value);
+        this.props.getSearchAction();
     };
 
     render() {
@@ -61,4 +62,4 @@ function mapStateToProps (store){
     }
 };
 
-export default connect(mapStateToProps,{setFilterAction})(Filter);
+export default connect(mapStateToProps,{setFilterAction, getSearchAction})(Filter);

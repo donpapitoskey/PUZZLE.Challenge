@@ -11,8 +11,8 @@ class modal extends Component {
   render() {
     let arr = [1, 6, 6, 6, 6];
     let elementos = [];
-    console.log(this.props.value)
-    for (let element of this.props.value.characters.slice(0,5)) {
+    
+    for (let element of this.props.chars.slice(0,5)) {
       elementos.push(<Auxcard value={element} />)
     }
 
