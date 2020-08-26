@@ -19,14 +19,15 @@ class Lister extends Component {
 
 
 
-        for (let element of this.props.episodes) {
+        for (let element of this.props.res) {
             elements.push(<Card
                 value={element}
                 name={element.name}
                 episode={element.episode}
                 created={element.created}
                 type={element.type}
-                dimension={element.dimension} />)
+                dimension={element.dimension}
+                image = {element.image} />)
 
         }
 
@@ -45,7 +46,7 @@ class Lister extends Component {
 
 function mapStateToProps(store) {
     return {
-        episodes: store.search.arr
+        res: store.search.arr
     }
 };
 

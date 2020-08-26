@@ -5,7 +5,7 @@ let initialData = {
     fetching: false,
     arr: [],
     info: {},
-    typeOfSearch: 'episodes',
+    typeOfSearch: 'characters',
     searchingPage: 1
 }
 
@@ -109,27 +109,25 @@ export function getSearchAction() { // action creator
               
                     `
                 break;
-                case "characters":
-                    requestProps =
+            case "characters":
+                requestProps =
                     `
                         name
+                        gender
+                        species
                         type
-                        dimension
-                        residents{
-                            name
-                        }
+                        image
               
                     `
                 break;
-                default:
-                    requestProps =
+            default:
+                requestProps =
                     `
                         name
+                        gender
+                        species
                         type
-                        dimension
-                        residents{
-                            name
-                        }
+                        image
               
                     `
                 break;
@@ -174,6 +172,13 @@ export function getSearchAction() { // action creator
                             type: REQUEST_SUCCESS,
                             payload: data.locations
                         })
+                        break;
+                    case "characters":
+                        dispatch({
+                            type: REQUEST_SUCCESS,
+                            payload: data.characters
+                        })
+                        break
                 }
 
             })

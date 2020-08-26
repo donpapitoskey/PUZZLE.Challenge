@@ -34,14 +34,17 @@ export default class Card extends Component {
                 <label>
                     <h4> {this.props.name ? this.props.name : null} </h4> 
                     <h4>{this.props.created ? this.props.created : null}</h4>
-                    <h4>{this.props.type ? this.props.type : null}</h4>
+                    <h4>{this.props.type && !this.props.image ? this.props.type : null}</h4>
                     <p>{this.props.episode ? this.props.episode : null}</p>
                     <p>{this.props.dimension ? this.props.dimension : null}</p>
+                    
                 </label>
+                <img src={this.props.image? this.props.image : null} height="200px"/>
                 <Modal show = { this.state.modalToggle}
                 modalClosed={this.modalHandler} 
                 value={this.props.value} 
-                chars={this.props.value.characters ? this.props.value.characters : this.props.value.residents}>
+                chars={this.props.value.characters ? this.props.value.characters :null}
+                residents = {this.props.value.residents? this.props.value.residents : null}>
                     
                 </Modal>
             </div>

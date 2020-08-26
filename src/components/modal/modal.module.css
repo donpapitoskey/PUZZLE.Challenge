@@ -1,10 +1,7 @@
 .Modal {
   position: fixed;
-  z-index: 500;
-  
+  z-index: 100;
   width: 100%;
-  
-  
   padding: 16px;
   left: 0%;
   top: 0%;
@@ -12,10 +9,10 @@
   transition: all 0.3s ease-out;
 }
 
-.content{
+.content {
   position: absolute;
   z-index: 700;
-  background-color: rgb(51, 50, 50);
+  background-color: rgb(233, 229, 233);
   width: 90%;
   height: 90vh;
   display: flex;
@@ -24,16 +21,12 @@
   padding: 16px;
   left: 5vw;
   top: 5vh;
-  
   box-sizing: border-box;
   transition: all 0.3s ease-out;
 }
 
-
-
-.aux_container{
+.aux_container {
   width: 100%;
-  
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -41,6 +34,4 @@
   align-content: flex-start;
   flex-wrap: wrap;
   margin: 0 auto;
-  
-  
 }

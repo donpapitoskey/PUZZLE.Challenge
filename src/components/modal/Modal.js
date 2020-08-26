@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import classes from "./modal.module.css";
 import Backdrop from './Backdrop';
 import {Auxcard} from '../card/Card';
+import {connect} from 'react-redux';
 
-
-class modal extends Component {
+class Modal extends Component {
 
 
 
@@ -12,9 +12,15 @@ class modal extends Component {
     let arr = [1, 6, 6, 6, 6];
     let elementos = [];
     
-    for (let element of this.props.chars.slice(0,5)) {
-      elementos.push(<Auxcard value={element} />)
+    if(this.props.typeOfSearch != "characters"){
+
+      
+      for (let element of this.props.chars.slice(0,5)) {
+        elementos.push(<Auxcard value={element} />)
+      }
+
     }
+
 
     return (
 
@@ -48,5 +54,11 @@ class modal extends Component {
   }
 };
 
+function mapStateToProps(store){
 
-export default modal;
+  return{
+    typeOfSearch: store.search.typeOfSearch
+  }
+}
+
+export default connect(mapStateToProps)(Modal);
