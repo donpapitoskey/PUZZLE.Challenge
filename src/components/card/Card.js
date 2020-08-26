@@ -32,11 +32,14 @@ export default class Card extends Component {
             <div className={styles.container} onClick={this.modalHandler}>
                 
                 <label>
-                    <h4> {this.props.value.name} </h4> 
-                    <h4>{this.props.value.created}</h4>
-                    <p>{this.props.episode}</p>
+                    <h4> {this.props.name ? this.props.name : null} </h4> 
+                    <h4>{this.props.created ? this.props.created : null}</h4>
+                    <p>{this.props.episode ? this.props.episode : null}</p>
                 </label>
-                <Modal show = { this.state.modalToggle} modalClosed={this.modalHandler} value={this.props.value} chars={this.props.value.characters}>
+                <Modal show = { this.state.modalToggle}
+                modalClosed={this.modalHandler} 
+                value={this.props.value} 
+                chars={this.props.value.characters}>
                     
                 </Modal>
             </div>
@@ -45,6 +48,12 @@ export default class Card extends Component {
     }
 
 
+}
+
+Card.propTypes = {
+    name: PropTypes.string.isRequired,
+    created: PropTypes.string,
+    episode: PropTypes.string
 }
 
 export class Auxcard extends Component {

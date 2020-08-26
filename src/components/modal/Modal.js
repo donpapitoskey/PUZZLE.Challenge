@@ -25,10 +25,8 @@ class modal extends Component {
           opacity: this.props.show ? 1 : 0
         }}>
         <div className={classes.content} >
-          <div className={classes.leftSection}>
-            infoCharModule
-        </div>
-          <div className={classes.rightSection}>
+          
+          
       <h2>{this.props.value.name}</h2>
       <h3> Creation date: {this.props.value.created}</h3>
       <h3>{this.props.value.episode}</h3>
@@ -39,7 +37,7 @@ class modal extends Component {
                 
             </div>
 
-          </div>
+          
 
         </div>
 

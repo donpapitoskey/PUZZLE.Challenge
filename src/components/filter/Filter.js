@@ -10,17 +10,9 @@ import {setFilterAction} from '../../redux/searchDuck';
 
 class Filter extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedOption: "characters"
-        };
-        this.props.setFilterAction(this.state.selectedOption)
-    }
+    
     handleOptionChange = changeEvent => {
-        this.setState({
-            selectedOption: changeEvent.target.value
-        });
+       
         this.props.setFilterAction(changeEvent.target.value);
     };
 
@@ -34,7 +26,7 @@ class Filter extends Component {
                         name="filter"
                         className="form-check-input"
                         value="characters"
-                        checked={this.state.selectedOption === "characters"}
+                        checked={this.props.filterOption === "characters"}
                         onChange={this.handleOptionChange} /> Characters
                 </label>
                 <label>
@@ -43,7 +35,7 @@ class Filter extends Component {
                         name="filter"
                         className="form-check-input"
                         value="locations"
-                        checked={this.state.selectedOption === 'locations'}
+                        checked={this.props.filterOption === 'locations'}
                         onChange={this.handleOptionChange} /> Locations
                 </label>
                 <label>
@@ -52,7 +44,7 @@ class Filter extends Component {
                         name= "filter"
                         value="episodes"
                         className="form-check-input"
-                        checked={this.state.selectedOption === 'episodes'}
+                        checked={this.props.filterOption === 'episodes'}
                         onChange={this.handleOptionChange} /> Episodes
                 </label>
             </div>

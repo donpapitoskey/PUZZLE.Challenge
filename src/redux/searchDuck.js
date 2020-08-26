@@ -4,9 +4,9 @@ import ApolloClient, { gql } from 'apollo-boost'
 let initialData = {
     fetching: false,
     arr: [],
-    info:{},
-    typeOfSearch: 'characters',
-    searchingPage: 2
+    info: {},
+    typeOfSearch: 'episodes',
+    searchingPage: 1
 }
 
 let client = new ApolloClient({
@@ -31,9 +31,9 @@ export default function reducer(state = initialData, action) {
         case REQUEST_SUCCESS:
             return { ...state, fetching: false, arr: action.payload.results, info: action.payload.info }
         case FILTER_CHANGED:
-            return {...state, typeOfSearch: action.payload}
+            return { ...state, typeOfSearch: action.payload }
         case PAGE_CHANGED:
-            return {...state,searchingPage: action.payload}
+            return { ...state, searchingPage: action.payload }
         default:
             return state
     }
@@ -43,7 +43,7 @@ export default function reducer(state = initialData, action) {
 
 
 //Actions 
-export let setPageAction = (pageNum) => (dispatch,getState) => {
+export let setPageAction = (pageNum) => (dispatch, getState) => {
 
 
     dispatch({
@@ -55,8 +55,8 @@ export let setPageAction = (pageNum) => (dispatch,getState) => {
 }
 
 export let setFilterAction = (newFilter) => (dispatch, getState) => {
-    
-    
+
+
     dispatch({
         type: FILTER_CHANGED,
         payload: newFilter
@@ -68,27 +68,53 @@ export let setFilterAction = (newFilter) => (dispatch, getState) => {
 export function getSearchAction() { // action creator
     return (dispatch, getState) => { //recibe dispatch y get state. dispatch hace la accion getstate brinda store :D
         //return 
-        let typeOfSearch =  "episodes";
+
+        let { typeOfSearch, searchingPage } = getState().search;
+        let requestProps = ``
+        switch (typeOfSearch) {
+            case "episodes":
+                requestProps =
+                    `
+                        name
+                        created
+                        episode
+                        characters{
+                            name
+                        }
+              
+                    `
+                break
+            case "locations":
+                requestProps =
+                    `
+                        name
+                        type
+                        dimension
+                        residents{
+                            name
+                        }
+              
+                    `
+                break;
+
+        }
+
         let query = gql`
         query {
-            ${typeOfSearch}(filter:{name:""}){
+            ${typeOfSearch}(filter:{name:""} page:${searchingPage}){
             info {
               count
-                pages
+              pages
               next
             }
             results{
-              name
-              created
-              episode
-              characters{
-                name
-              }
-              
+              ${requestProps}
             }
           }
         }
         `
+
+
         dispatch({
             type: REQUEST,
             variables: {}

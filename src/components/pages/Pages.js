@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import styles from './pages.module.css'
 import Pagination from '@material-ui/lab/Pagination'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import { setPageAction} from '../../redux/searchDuck';
+import { connect } from 'react-redux'
+import { setPageAction, getSearchAction } from '../../redux/searchDuck';
 
 
 
@@ -16,23 +16,24 @@ class Pages extends Component {
             selecterOption: "characters"
         };
     }
-    handleChange = (props,value) => {
+    handleChange = (props, value) => {
         console.log(value)
         this.props.setPageAction(value);
+        this.props.getSearchAction();
     }
 
     render() {
         return (
             <div className={styles.container}>
-                <Pagination 
-                count={this.props.info.pages} 
-                
-                shape={'round'}
-                siblingCount={2}
-                boundaryCount={1}
-                page={this.props.page}
-                onChange={this.handleChange}
-                variant="outlined" />
+                <Pagination
+                    count={this.props.info.pages}
+
+                    shape={'round'}
+                    siblingCount={2}
+                    boundaryCount={1}
+                    page={this.props.page}
+                    onChange={this.handleChange}
+                    variant="outlined" />
 
 
             </div>
@@ -50,4 +51,4 @@ function mapStateToProps(store) {
 }
 
 
-export default connect(mapStateToProps,{setPageAction})(Pages)
+export default connect(mapStateToProps, { setPageAction, getSearchAction })(Pages)

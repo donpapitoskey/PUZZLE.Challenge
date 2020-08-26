@@ -20,7 +20,11 @@ class Lister extends Component {
 
 
         for(let element of this.props.episodes){
-            elements.push(<Card value={element}/>)
+            elements.push(<Card 
+                value={element} 
+                name={element.name} 
+                episode={element.episode}
+                created= {element.created}/>)
             
         }
         

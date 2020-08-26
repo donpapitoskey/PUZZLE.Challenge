@@ -19,7 +19,7 @@
   width: 90%;
   height: 90vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   box-shadow: 1px 1px 1px black;
   padding: 16px;
   left: 5vw;
@@ -27,21 +27,6 @@
   
   box-sizing: border-box;
   transition: all 0.3s ease-out;
-}
-
-.leftSection{
-  width:50%;
-  background-color: lemonchiffon;
-  display: flex;
-  flex-direction: column;
-}
-
-.rightSection{
-  width: 50%;
-  background-color: lightgreen;
-  margin-left: 15px;
-  flex-direction: column;
-  overflow-y: scroll;
 }
 
 
