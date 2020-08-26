@@ -4,7 +4,6 @@ import Filter from '../filter/Filter';
 import Search from '../search/Search';
 import Lister from '../lister/Lister';
 import Pages from '../pages/Pages';
-import store from '../../redux/store';
 
 export default function Home() {
 
@@ -27,7 +26,9 @@ export default function Home() {
 
             </div>
             <div className={styles.signature} >
-                <h3> Juan J. Alarcon</h3>
+                
+                <h3 > Juan J. Alarcon</h3>
+                
                 <h3> {currDate}</h3>
             </div>
         </div>

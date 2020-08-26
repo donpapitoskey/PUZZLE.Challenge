@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     display: flex;
-    background-color: turquoise;
+    background-color: rgb(243, 239, 243);
 }
 
 .container {
@@ -15,29 +15,29 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: thistle;
+    background-color: rgb(243, 239, 243);
 }
 
 .side_filter {
-    width: 30%;
-    max-width: 280px;
+    width: 20%;
+    
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: yellowgreen;
+    align-items: flex-start;
+    background-color: rgb(243, 239, 243);
 }
 
 .mainBlock {
     
     height: 100%;
-    width: 100%;
-    display: flex;
+    width: 80%;
+    
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-end;
     
-    background-color: rgb(205, 50, 159);
+    background-color: rgb(124, 29, 124);
 }
 
 .signature {
@@ -45,7 +45,9 @@
     height: 5%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    background-color: teal;
+    background-color: rgb(145, 228, 118);
+    
+    
 }
