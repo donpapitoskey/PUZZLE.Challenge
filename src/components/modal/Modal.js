@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import classes from "./modal.module.css";
 import Backdrop from './Backdrop';
-import {Auxcard} from '../card/Card';
-import {connect} from 'react-redux';
+import { Auxcard } from '../card/Card';
+import { connect } from 'react-redux';
 
 class Modal extends Component {
 
@@ -11,14 +11,19 @@ class Modal extends Component {
   render() {
     let arr = [1, 6, 6, 6, 6];
     let elementos = [];
-    
-    if(this.props.typeOfSearch != "characters"){
 
-      
-      for (let element of this.props.chars.slice(0,5)) {
+    if (this.props.typeOfSearch == "episodes") {
+
+
+      for (let element of this.props.chars.slice(0, 5)) {
         elementos.push(<Auxcard value={element} />)
       }
 
+    }
+    else if (this.props.typeOfSearch == "locations") {
+      for (let element of this.props.residents.slice(0, 5)) {
+        elementos.push(<Auxcard value={element} />)
+      }
     }
 
 
@@ -31,19 +36,19 @@ class Modal extends Component {
           opacity: this.props.show ? 1 : 0
         }}>
         <div className={classes.content} >
-          
-          
-      <h2>{this.props.value.name}</h2>
-      <h3> Creation date: {this.props.value.created}</h3>
-      <h3>{this.props.value.episode}</h3>
-            <div> Characters</div>
-            <div className={classes.aux_container}>
-                
-                {elementos}
-                
-            </div>
 
-          
+
+          <h2>{this.props.value.name}</h2>
+          <h3> Creation date: {this.props.value.created}</h3>
+          <h3>{this.props.value.episode}</h3>
+          <div> Characters</div>
+          <div className={classes.aux_container}>
+
+            {elementos}
+
+          </div>
+
+
 
         </div>
 
@@ -54,9 +59,9 @@ class Modal extends Component {
   }
 };
 
-function mapStateToProps(store){
+function mapStateToProps(store) {
 
-  return{
+  return {
     typeOfSearch: store.search.typeOfSearch
   }
 }

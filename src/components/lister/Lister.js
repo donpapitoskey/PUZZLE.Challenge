@@ -31,13 +31,22 @@ class Lister extends Component {
 
         }
 
+        if(this.props.fetching){
+return (
+    <div className={styles.container}>
+        <h2>Loading ...</h2>
+    </div>
+)
+        }
+        else{
+
         return (
             
                 <div className={styles.container}>
                     {elements}
                 </div>
             
-        )
+        )}
 
     }
 
@@ -46,7 +55,8 @@ class Lister extends Component {
 
 function mapStateToProps(store) {
     return {
-        res: store.search.arr
+        res: store.search.arr,
+        fetching: store.search.fetching
     }
 };
 

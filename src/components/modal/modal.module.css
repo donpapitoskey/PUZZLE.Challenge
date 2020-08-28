@@ -1,5 +1,5 @@
 .Modal {
-  position: fixed;
+  position: absolute;
   z-index: 100;
   width: 100%;
   padding: 16px;
@@ -7,23 +7,30 @@
   top: 0%;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
+
+  
 }
 
 .content {
-  position: absolute;
+  position: relative;
   z-index: 700;
-  background-color: rgb(233, 229, 233);
+  background-color: rgb(240, 235, 240);
   width: 90%;
   height: 90vh;
   display: flex;
   flex-direction: column;
   box-shadow: 1px 1px 1px black;
   padding: 16px;
-  left: 5vw;
-  top: 5vh;
+  overflow-y: scroll;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
+  
 }
+
+.content::-webkit-scrollbar{
+  display: none;
+}
+
 
 .aux_container {
   width: 100%;
