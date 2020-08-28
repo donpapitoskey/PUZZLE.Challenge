@@ -40,7 +40,7 @@ export default class Card extends Component {
                     <p>{this.props.dimension ? this.props.dimension : null}</p>
                     
                 </label>
-                <img src={this.props.image? this.props.image : null} height="200px"/>
+                <img src={this.props.image? this.props.image : null} height={this.props.image ? "200px" : null}/>
                 
             </div>
             <Modal show = { this.state.modalToggle}
@@ -99,4 +99,12 @@ export class Auxcard extends Component {
     }
 
 
+}
+
+Auxcard.propTypes = {
+    name: PropTypes.string.isRequired,
+    created: PropTypes.string,
+    episode: PropTypes.string,
+    type: PropTypes.string,
+    dimension: PropTypes.string
 }

@@ -81,7 +81,7 @@ export function getSearchAction() { // action creator
         //return 
 
         let { typeOfSearch, searchingPage } = getState().search;
-        console.log(typeOfSearch)
+        
         let requestProps = ``
         switch (typeOfSearch) {
             case "episodes":
@@ -159,7 +159,7 @@ export function getSearchAction() { // action creator
             query
         })
             .then(({ data }) => {
-                console.log(data);
+                
                 switch (typeOfSearch) {
                     case "episodes":
                         dispatch({

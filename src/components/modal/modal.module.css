@@ -1,10 +1,13 @@
 .Modal {
   position: absolute;
+  display: flex;
   z-index: 100;
-  width: 100%;
+  width: 516px;
   padding: 16px;
   left: 0%;
   top: 0%;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
 
