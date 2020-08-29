@@ -25,14 +25,18 @@ const PAGE_CHANGED = "PAGE_CHANGED"
 
 const ERASE_STORE = "ERASE_STORE"
 
+
 const UPDATE_NAME_BOX = "UPDATE_NAME_BOX"
+const ERASE_NAME_FIELD = "ERASE_NAME_FIELD"
+
 const UPDATE_TYPE_BOX = "UPDATE_TYPE_BOX"
+const ERASE_TYPE_FIELD = "ERASE_TYPE_FIELD"
 //Reducer
 
 export default function reducer(state = initialData, action) {
     switch (action.type) {
         case ERASE_STORE:
-            return { ...state, arr: action.payload,error: "clean" }
+            return { ...state, arr: action.payload, info: action.payload, error: "clean" }
         case REQUEST:
             return { ...state, fetching: true } //lo que devuelvo
         case REQUEST_ERROR:
@@ -47,6 +51,10 @@ export default function reducer(state = initialData, action) {
             return { ...state, searchName: action.payload }
         case UPDATE_TYPE_BOX:
             return { ...state, searchType: action.payload }
+        case ERASE_TYPE_FIELD:
+            return { ...state, searchType: action.payload }
+        case ERASE_NAME_FIELD:
+            return { ...state, searchName: action.payload }
         default:
             return state
     }
@@ -56,6 +64,21 @@ export default function reducer(state = initialData, action) {
 
 
 //Actions 
+
+export let eraseNameFieldAction = () => (dispatch, getState) => {
+    dispatch({
+        type: ERASE_NAME_FIELD,
+        payload: ''
+    })
+}
+
+export let eraseTypeFieldAction = () => (dispatch, getState) => {
+    dispatch({
+        type: ERASE_TYPE_FIELD,
+        payload: ''
+    })
+}
+
 export let updateTypeAction = (updatedType) => (dispatch, getState) => {
 
     dispatch({
@@ -106,11 +129,11 @@ export function getSearchAction() { // action creator
         //return 
 
         let { typeOfSearch, searchingPage, searchName, searchType } = getState().search;
-
+        let searchCriteria = '';
         let requestProps = ``
         switch (typeOfSearch) {
             case "episodes":
-
+                searchCriteria = `name: "${searchName}"`
                 requestProps =
                     `
                         name
@@ -123,6 +146,7 @@ export function getSearchAction() { // action creator
                     `
                 break
             case "locations":
+                searchCriteria = `name: "${searchName}" type: "${searchType}"`
                 requestProps =
                     `
                         name
@@ -135,6 +159,7 @@ export function getSearchAction() { // action creator
                     `
                 break;
             case "characters":
+                searchCriteria = `name: "${searchName}" type: "${searchType}"`
                 requestProps =
                     `
                         name
@@ -146,6 +171,7 @@ export function getSearchAction() { // action creator
                     `
                 break;
             default:
+                searchCriteria = `name: "${searchName}" type: "${searchType}"`
                 requestProps =
                     `
                         name
@@ -161,7 +187,7 @@ export function getSearchAction() { // action creator
 
         let query = gql`
         query {
-            ${typeOfSearch}(filter:{name:"${searchName}" type:"${searchType}"} page:${searchingPage}){
+            ${typeOfSearch}(filter:{${searchCriteria}} page:${searchingPage}){
             info {
               count
               pages
@@ -187,6 +213,7 @@ export function getSearchAction() { // action creator
 
                 switch (typeOfSearch) {
                     case "episodes":
+
                         dispatch({
                             type: REQUEST_SUCCESS,
                             payload: data.episodes
@@ -208,8 +235,8 @@ export function getSearchAction() { // action creator
 
             })
             .catch((err) => {
-                console.log("oe si hubo error mi rey")
-                
+
+
                 dispatch({
                     type: REQUEST_ERROR,
                     payload: err

@@ -30,7 +30,7 @@ export default class Card extends Component {
                 
                 <label>
                     <h3> {this.props.name ? this.props.name : null} </h3> 
-                    <h3>{this.props.created ? this.props.created : null}</h3>
+                    <p>{this.props.created ? this.props.created : null}</p>
                     <h4>{this.props.type && !this.props.image ? this.props.type : null}</h4>
                     <p>{this.props.episode ? this.props.episode : null}</p>
                     <p>{this.props.dimension ? this.props.dimension : null}</p>
@@ -79,15 +79,13 @@ export class Auxcard extends Component {
         })
     };
 
-    
-
     render() {
         
         return (
             <div className={styles.container} onClick={this.modalHandler}>
                 
                 
-        <h3>{this.props.value.name}</h3>
+        <h3>{this.props.value.name?this.props.value.name:"None"}</h3>
                 
             </div>
         )

@@ -16,8 +16,7 @@ export default function generateStore(){ // crear store
         composeEnhancers( applyMiddleware(thunk))
     ); //crear store, recieves 3 params: reducer, initial_state and middlewares (apps extra que el store soportará)
     // primera llamada
-    //getCharactersAction()(store.dispatch, store.getState);    //ejecutar acción devuelve funcion que necesita dispatch y getstate
-    //restoreSessionAction()(store.dispatch);
-    getSearchAction()(store.dispatch,store.getState);
+    
+    
     return store;
 }

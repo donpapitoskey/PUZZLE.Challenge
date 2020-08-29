@@ -26,7 +26,7 @@ class Pages extends Component {
         return (
             <div className={styles.container}>
                 <Pagination
-                    count={this.props.info.pages}
+                    count={this.props.info.pages ? this.props.info.pages : 1}
 
                     shape={'round'}
                     siblingCount={2}
