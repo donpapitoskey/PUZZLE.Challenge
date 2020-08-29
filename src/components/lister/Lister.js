@@ -27,26 +27,35 @@ class Lister extends Component {
                 created={element.created}
                 type={element.type}
                 dimension={element.dimension}
-                image = {element.image} />)
+                image={element.image} />)
 
         }
 
-        if(this.props.fetching){
-return (
-    <div className={styles.container}>
-        <h2>Loading ...</h2>
-    </div>
-)
-        }
-        else{
+        if (this.props.fetching) {
+            return (
+                <div className={styles.container}>
+                    <h2>Loading ...</h2>
+                </div>
+            )
+        } else if (this.props.err != "clean") {
+            return(
+            <div className={styles.container}>
 
-        return (
-            
+                
+                <h2>Sorry Morty. Your search could not be achieved :(</h2>
+                    <h3>Give it another try with new values :D</h3>
+            </div>)
+        }
+        else {
+
+            return (
+
                 <div className={styles.container}>
                     {elements}
                 </div>
-            
-        )}
+
+            )
+        }
 
     }
 
@@ -56,7 +65,8 @@ return (
 function mapStateToProps(store) {
     return {
         res: store.search.arr,
-        fetching: store.search.fetching
+        fetching: store.search.fetching,
+        err: store.search.error
     }
 };
 

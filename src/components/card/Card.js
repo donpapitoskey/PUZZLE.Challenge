@@ -7,11 +7,7 @@ import PropTypes from 'prop-types'
 
 export default class Card extends Component {
 
-    constructor(props) {
-        super(props);
-        
-    };
-
+   
 
     state={
         modalToggle: false

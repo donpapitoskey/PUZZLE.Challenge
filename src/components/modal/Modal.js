@@ -9,7 +9,7 @@ class Modal extends Component {
 
 
   render() {
-    let arr = [1, 6, 6, 6, 6];
+     
     let elementos = [];
 
     if (this.props.typeOfSearch == "locations") {
