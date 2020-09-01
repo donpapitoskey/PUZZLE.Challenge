@@ -10,8 +10,6 @@
   align-items: center;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
-
-  
 }
 
 .content {
@@ -27,13 +25,11 @@
   overflow-y: scroll;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
-  
 }
 
-.content::-webkit-scrollbar{
+.content::-webkit-scrollbar {
   display: none;
 }
-
 
 .aux_container {
   width: 100%;

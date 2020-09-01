@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     flex-flow: row;
     font-family: Avenir;
@@ -13,5 +13,4 @@
 
 .cancel {
     padding-top: 24px;
-    
 }

@@ -7,8 +7,6 @@ import PropTypes from 'prop-types'
 
 export default class Card extends Component {
 
-   
-
     state={
         modalToggle: false
     }
@@ -19,8 +17,6 @@ export default class Card extends Component {
             modalToggle: !this.state.modalToggle
         })
     };
-
-    
 
     render() {
         
@@ -61,12 +57,6 @@ Card.propTypes = {
 }
 
 export class Auxcard extends Component {
-
-    constructor(props) {
-        super(props);
-        
-    };
-
 
     state={
         modalToggle: false

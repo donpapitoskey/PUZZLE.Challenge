@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styles from './search.module.css'
-import PropTypes from 'prop-types';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -10,7 +9,6 @@ import {
     getSearchAction, updateNameAction, updateTypeAction,
     eraseStoreAction, eraseNameFieldAction, eraseTypeFieldAction
 } from '../../redux/searchDuck'
-
 
 class Search extends Component {
 
@@ -37,7 +35,7 @@ class Search extends Component {
     }
 
     enterPressed = (event) => {
-        if (event.keyCode == 13 && (this.props.name.length > 2 || this.props.type.length > 2)) {
+        if (event.keyCode === 13 && (this.props.name.length > 2 || this.props.type.length > 2)) {
             this.props.eraseStoreAction();
             this.props.getSearchAction();
 
@@ -49,13 +47,12 @@ class Search extends Component {
             nameInput: ''
         })
         this.props.eraseNameFieldAction();
-        if(this.props.type != ''){
+        if (this.props.type !== '') {
             this.props.getSearchAction();
         }
-        else{
+        else {
             this.props.eraseStoreAction();
         }
-        
     }
 
     eraseType = (event) => {
@@ -63,23 +60,19 @@ class Search extends Component {
             typeInput: ''
         })
         this.props.eraseTypeFieldAction();
-        if(this.props.name != ''){
+        if (this.props.name !== '') {
             this.props.getSearchAction();
         }
-        else{
+        else {
             this.props.eraseStoreAction();
         }
     }
 
-
     render() {
         return (
             <div className={styles.container}>
-
                 <div className={styles.container}>
-
                     <TextField
-
                         fullWidth
                         value={this.state.nameInput}
                         InputProps={{
@@ -89,19 +82,16 @@ class Search extends Component {
                                 </InputAdornment>
                             )
                         }}
-                        //className="input"
                         label="Name..."
                         onChange={this.nameFieldChanged}
                         onKeyDown={this.enterPressed}
                     />
-
                     <div className={styles.cancel} style={this.props.name ? null : { display: "none" }} onClick={this.eraseName}>
                         <CancelIcon />
                     </div>
                 </div>
                 <div className={styles.container}>
                     <TextField
-
                         fullWidth
                         value={this.state.typeInput}
                         InputProps={{
@@ -111,7 +101,6 @@ class Search extends Component {
                                 </InputAdornment>
                             )
                         }}
-                        //className="input"
                         label="Type..."
                         onChange={this.typeFieldChanged}
                         onKeyDown={this.enterPressed}
@@ -120,15 +109,9 @@ class Search extends Component {
                         <CancelIcon />
                     </div>
                 </div>
-
-
-
             </div>
         )
-
     }
-
-
 };
 
 function mapStateToProps(store) {

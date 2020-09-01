@@ -1,5 +1,5 @@
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
-import searchReducer, {getSearchAction}  from './searchDuck';
+import searchReducer from './searchDuck';
 import thunk from 'redux-thunk'; // to do backend request
 //import charsReducer,{getCharactersAction} from  './charsDuck';
 

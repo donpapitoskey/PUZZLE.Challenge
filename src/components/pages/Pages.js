@@ -2,11 +2,8 @@
 import React, { Component } from 'react'
 import styles from './pages.module.css'
 import Pagination from '@material-ui/lab/Pagination'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setPageAction, getSearchAction } from '../../redux/searchDuck';
-
-
 
 class Pages extends Component {
 
@@ -34,13 +31,9 @@ class Pages extends Component {
                     page={this.props.page}
                     onChange={this.handleChange}
                     variant="outlined" />
-
-
             </div>
         )
-
     }
-
 
 }
 function mapStateToProps(store) {
@@ -49,6 +42,5 @@ function mapStateToProps(store) {
         page: store.search.searchingPage
     }
 }
-
 
 export default connect(mapStateToProps, { setPageAction, getSearchAction })(Pages)

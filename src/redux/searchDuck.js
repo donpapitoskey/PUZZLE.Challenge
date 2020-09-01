@@ -61,8 +61,6 @@ export default function reducer(state = initialData, action) {
 
 }
 
-
-
 //Actions 
 
 export let eraseNameFieldAction = () => (dispatch, getState) => {
@@ -182,9 +180,7 @@ export function getSearchAction() { // action creator
               
                     `
                 break;
-
         }
-
         let query = gql`
         query {
             ${typeOfSearch}(filter:{${searchCriteria}} page:${searchingPage}){
@@ -199,8 +195,6 @@ export function getSearchAction() { // action creator
           }
         }
         `
-
-
         dispatch({
             type: REQUEST,
             variables: {}
@@ -213,7 +207,6 @@ export function getSearchAction() { // action creator
 
                 switch (typeOfSearch) {
                     case "episodes":
-
                         dispatch({
                             type: REQUEST_SUCCESS,
                             payload: data.episodes
@@ -230,13 +223,12 @@ export function getSearchAction() { // action creator
                             type: REQUEST_SUCCESS,
                             payload: data.characters
                         })
-                        break
+                        break;
+                    default:
+                        break;
                 }
-
             })
             .catch((err) => {
-
-
                 dispatch({
                     type: REQUEST_ERROR,
                     payload: err

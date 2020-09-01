@@ -19,16 +19,12 @@ export default function Home() {
                     <Filter />
                 </div>
                 <div className={styles.mainBlock}>
-                    <Lister/>
+                    <Lister />
                     <Pages />
-
                 </div>
-
             </div>
             <div className={styles.signature} >
-                
                 <h3 > Juan J. Alarcon</h3>
-                
                 <h3> {currDate}</h3>
             </div>
         </div>

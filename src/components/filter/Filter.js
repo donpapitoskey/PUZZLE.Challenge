@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
 import styles from './filter.module.css'
-import {connect}from 'react-redux'; //conectar componente con redux
-import {setFilterAction, getSearchAction, eraseStoreAction} from '../../redux/searchDuck';
-
-
-
-
-
+import { connect } from 'react-redux'; //conectar componente con redux
+import { setFilterAction, getSearchAction, eraseStoreAction } from '../../redux/searchDuck';
 
 class Filter extends Component {
 
-    
+
     handleOptionChange = changeEvent => {
-       
+
         this.props.setFilterAction(changeEvent.target.value);
         this.props.eraseStoreAction();
     };
@@ -42,7 +37,7 @@ class Filter extends Component {
                 <label>
                     <input
                         type="radio"
-                        name= "filter"
+                        name="filter"
                         value="episodes"
                         className="form-check-input"
                         checked={this.props.filterOption === 'episodes'}
@@ -50,16 +45,14 @@ class Filter extends Component {
                 </label>
             </div>
         )
-
     }
-
 
 }
 
-function mapStateToProps (store){
+function mapStateToProps(store) {
     return {
         filterOption: store.search.typeOfSearch
     }
 };
 
-export default connect(mapStateToProps,{setFilterAction, getSearchAction, eraseStoreAction})(Filter);
+export default connect(mapStateToProps, { setFilterAction, getSearchAction, eraseStoreAction })(Filter);

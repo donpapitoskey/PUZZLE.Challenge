@@ -1,7 +1,6 @@
-.container{
+.container {
     display: flex;
     justify-content: center;
-    font-family: Avenir;
     cursor: pointer;
     min-width: 250px;
     width: 20%;
