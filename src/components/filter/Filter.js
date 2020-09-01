@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from './filter.module.css'
+import Backdrop from '../modal/Backdrop';
 import { connect } from 'react-redux'; //conectar componente con redux
 import { setFilterAction, getSearchAction, eraseStoreAction } from '../../redux/searchDuck';
 
@@ -14,7 +15,12 @@ class Filter extends Component {
 
     render() {
         return (
-            <div className={styles.container}>
+            <div className={this.props.small ? styles.containerSmall : styles.container}
+            style={{
+                transform: this.props.show ? 'translateX(0)' :
+                  'translateX(-100vh)',
+                opacity: this.props.show ? 1 : 0
+              }}>
                 <h3>Filters</h3>
                 <label>
                     <input
@@ -43,6 +49,7 @@ class Filter extends Component {
                         checked={this.props.filterOption === 'episodes'}
                         onChange={this.handleOptionChange} /> Episodes
                 </label>
+                <Backdrop show={this.props.show && this.props.small} clicked={this.props.modalClosed} />
             </div>
         )
     }

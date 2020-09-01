@@ -4,6 +4,7 @@ import Filter from '../filter/Filter';
 import Search from '../search/Search';
 import Lister from '../lister/Lister';
 import Pages from '../pages/Pages';
+import ListIcon from '@material-ui/icons/List';
 
 export default class Home extends Component {
 
@@ -11,16 +12,21 @@ export default class Home extends Component {
         super(props);
         this.state = {
             windowWidth: 0,
-            windowHeight: 0
+            windowHeight: 0,
+            modalFilter: false
         };
-        this.wrapperRef = React.createRef();
+        
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
-    handleClick() {
-        const wrapper = this.wrapperRef.current;
-        wrapper.classList.toggle('is-nav-open');
+    modalFilterHandler = (event)=>  {
+        event.preventDefault();
+        this.setState({
+            modalFilter: !this.state.modalFilter
+        });
+        
     }
+
     componentDidMount() {
         this.updateDimensions();
         window.addEventListener("resize", this.updateDimensions);
@@ -36,8 +42,16 @@ export default class Home extends Component {
 
         this.setState({ windowWidth, windowHeight });
     }
+
     currDate = {
         date: new Date().toLocaleDateString()
+    }
+
+    handleClick = () => {
+        console.log("button clicked")
+        this.setState({
+            modalFilter:!this.state.modalFilter
+        })
     }
 
     render() {
@@ -49,13 +63,23 @@ export default class Home extends Component {
             
             <div style={{ height: "100vh" }}>
                 
-                <div className={styles.searcher} style={{"flex-direction": isSmallScreen ? "row": null}}>
-                    <Search />
+                <div className={styles.searcher} style={{height: isSmallScreen ? "20%": null}}>
+                    <div style={{opacity: isSmallScreen ? 1 : 0}}>
+                    <ListIcon fontSize="large" style={{"padding-left":"20px"}}
+                    color="disabled"
+                    onClick={this.handleClick}/>
+                    </div>
+                    <Search smallScreen={isSmallScreen}/>
+                    
                 </div>
                 <div className={styles.container} >
-                    {isSmallScreen ? null : <div className={styles.side_filter} >
-                        <Filter />
-                    </div>}
+                    
+                    <div className={isSmallScreen ? styles.side_filterClosed : styles.side_filter} >
+                       
+                            <Filter show={isSmallScreen ? this.state.modalFilter : true} small={isSmallScreen}/>
+                       
+                        
+                    </div>
                     <div className={styles.mainBlock} style={{width: isSmallScreen ? "100%" : null}}>
                         <Lister />
                         <Pages />
@@ -65,6 +89,7 @@ export default class Home extends Component {
                     <h3 > Juan J. Alarcon</h3>
                     <h3> {this.currDate.date}</h3>
                 </div>
+
             </div>
         )
     }

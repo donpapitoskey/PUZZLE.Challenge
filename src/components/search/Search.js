@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from './search.module.css'
+import Backdrop from  '../modal/Backdrop';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -70,7 +71,9 @@ class Search extends Component {
 
     render() {
         return (
-            <div className={styles.container}>
+            <div className={styles.container} style={{
+                "flex-flow" : this.props.smallScreen ? "column": null ,
+                "padding-left" : this.props.smallScreen ? "0" :null}}>
                 <div className={styles.container}>
                     <TextField
                         fullWidth
