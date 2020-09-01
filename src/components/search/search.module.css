@@ -1,6 +1,5 @@
 .container {
     display: flex;
-    flex-flow: row;
     font-family: Avenir;
     cursor: pointer;
     min-width: 250px;
