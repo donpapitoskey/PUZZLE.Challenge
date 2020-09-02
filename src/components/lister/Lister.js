@@ -58,7 +58,7 @@ class Lister extends Component {
             )
         } else if (this.props.err !== "clean") {
             return (
-                <div className={styles.container}>
+                <div className={styles.containerError}>
                     <h2>Sorry Morty. Your search could not be achieved :(</h2>
                     <h3>Give it another try with new values :D</h3>
                 </div>)
