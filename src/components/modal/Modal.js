@@ -73,7 +73,7 @@ class Modal extends Component {
             opacity: this.props.show ? 1 : 0
           }}>
           <div className={classes.content} >
-            <img src={this.props.value.image ? this.props.value.image : null} width="400px" />
+            <img src={this.props.value.image ? this.props.value.image : null}/>
             <h2> {this.props.value.name}</h2>
             <h3> Type: {this.props.value.type}</h3>
             <h3>Genre: {this.props.value.gender}</h3>

@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import styles from './search.module.css'
-import Backdrop from  '../modal/Backdrop';
+import React, { Component } from 'react';
+import styles from './search.module.css';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -43,7 +42,7 @@ class Search extends Component {
         }
     }
 
-    eraseName = (event) => {
+    eraseName = () => {
         this.setState({
             nameInput: ''
         })
@@ -56,7 +55,7 @@ class Search extends Component {
         }
     }
 
-    eraseType = (event) => {
+    eraseType = () => {
         this.setState({
             typeInput: ''
         })

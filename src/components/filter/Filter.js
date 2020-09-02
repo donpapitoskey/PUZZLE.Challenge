@@ -11,45 +11,50 @@ class Filter extends Component {
 
         this.props.setFilterAction(changeEvent.target.value);
         this.props.eraseStoreAction();
+        this.props.modalClosed();
     };
 
     render() {
         return (
-            <div className={this.props.small ? styles.containerSmall : styles.container}
-            style={{
-                transform: this.props.show ? 'translateX(0)' :
-                  'translateX(-100vh)',
-                opacity: this.props.show ? 1 : 0
-              }}>
-                <h3>Filters</h3>
-                <label>
-                    <input
-                        type="radio"
-                        name="filter"
-                        className="form-check-input"
-                        value="characters"
-                        checked={this.props.filterOption === "characters"}
-                        onChange={this.handleOptionChange} /> Characters
+            <div>
+                <div className={this.props.small ? styles.containerSmall : styles.container}
+                    style={{
+                        transform: this.props.show ? 'translateX(0)' :
+                            'translateX(-100vh)',
+                        opacity: this.props.show ? 1 : 0
+                    }}
+                    >
+                    <h3>Filters</h3>
+                    <label>
+                        <input
+                            type="radio"
+                            name="filter"
+                            className="form-check-input"
+                            value="characters"
+                            checked={this.props.filterOption === "characters"}
+                            onChange={this.handleOptionChange} /> Characters
                 </label>
-                <label>
-                    <input
-                        type="radio"
-                        name="filter"
-                        className="form-check-input"
-                        value="locations"
-                        checked={this.props.filterOption === 'locations'}
-                        onChange={this.handleOptionChange} /> Locations
+                    <label>
+                        <input
+                            type="radio"
+                            name="filter"
+                            className="form-check-input"
+                            value="locations"
+                            checked={this.props.filterOption === 'locations'}
+                            onChange={this.handleOptionChange} /> Locations
                 </label>
-                <label>
-                    <input
-                        type="radio"
-                        name="filter"
-                        value="episodes"
-                        className="form-check-input"
-                        checked={this.props.filterOption === 'episodes'}
-                        onChange={this.handleOptionChange} /> Episodes
+                    <label>
+                        <input
+                            type="radio"
+                            name="filter"
+                            value="episodes"
+                            className="form-check-input"
+                            checked={this.props.filterOption === 'episodes'}
+                            onChange={this.handleOptionChange} /> Episodes
                 </label>
+                </div>
                 <Backdrop show={this.props.show && this.props.small} clicked={this.props.modalClosed} />
+
             </div>
         )
     }

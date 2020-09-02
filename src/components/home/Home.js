@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { Component } from 'react';
 import styles from './home.module.css';
 import Filter from '../filter/Filter';
 import Search from '../search/Search';
@@ -15,16 +15,16 @@ export default class Home extends Component {
             windowHeight: 0,
             modalFilter: false
         };
-        
+
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
-    modalFilterHandler = (event)=>  {
+    modalFilterHandler = (event) => {
         event.preventDefault();
         this.setState({
             modalFilter: !this.state.modalFilter
         });
-        
+
     }
 
     componentDidMount() {
@@ -48,39 +48,38 @@ export default class Home extends Component {
     }
 
     handleClick = () => {
-        console.log("button clicked")
         this.setState({
-            modalFilter:!this.state.modalFilter
+            modalFilter: !this.state.modalFilter
         })
     }
 
     render() {
-        const {windowWidth} = this.state;
-        
+        const { windowWidth } = this.state;
+
         const isSmallScreen = windowWidth < 768;
 
         return (
-            
-            <div style={{ height: "100vh" }}>
-                
-                <div className={styles.searcher} style={{height: isSmallScreen ? "20%": null}}>
-                    <div style={{opacity: isSmallScreen ? 1 : 0}}>
-                    <ListIcon fontSize="large" style={{"padding-left":"20px"}}
-                    color="disabled"
-                    onClick={this.handleClick}/>
+
+            <div style={{ height: "100vh", width: "100vw" }}>
+
+                <div className={styles.searcher} style={{ height: isSmallScreen ? "20%" : null }}>
+                    <div style={{ opacity: isSmallScreen ? 1 : 0 }}>
+                        <ListIcon fontSize="large" style={{ "padding-left": "20px" }}
+                            color="disabled"
+                            onClick={this.handleClick} />
                     </div>
-                    <Search smallScreen={isSmallScreen}/>
-                    
+                    <Search smallScreen={isSmallScreen} />
+
                 </div>
                 <div className={styles.container} >
-                    
+
                     <div className={isSmallScreen ? styles.side_filterClosed : styles.side_filter} >
-                       
-                            <Filter show={isSmallScreen ? this.state.modalFilter : true} small={isSmallScreen}/>
-                       
-                        
+
+                        <Filter modalClosed={this.handleClick} show={isSmallScreen ? this.state.modalFilter : true} small={isSmallScreen} />
+
+
                     </div>
-                    <div className={styles.mainBlock} style={{width: isSmallScreen ? "100%" : null}}>
+                    <div className={styles.mainBlock} style={{ width: isSmallScreen ? "100%" : null }}>
                         <Lister />
                         <Pages />
                     </div>

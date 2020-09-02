@@ -2,7 +2,8 @@
   position: absolute;
   display: flex;
   z-index: 100;
-  width: 516px;
+  max-width: 518px;
+  min-width: 30%;
   padding: 16px;
   left: 0%;
   top: 0%;
@@ -16,7 +17,7 @@
   position: relative;
   z-index: 700;
   background-color: rgb(240, 235, 240);
-  width: 90%;
+  width: 95%;
   height: 90vh;
   display: flex;
   flex-direction: column;
