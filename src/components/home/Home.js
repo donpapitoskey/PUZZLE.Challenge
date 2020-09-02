@@ -13,7 +13,8 @@ export default class Home extends Component {
         this.state = {
             windowWidth: 0,
             windowHeight: 0,
-            modalFilter: false
+            modalFilter: false,
+            
         };
 
         this.updateDimensions = this.updateDimensions.bind(this);
@@ -53,6 +54,8 @@ export default class Home extends Component {
         })
     }
 
+
+
     render() {
         const { windowWidth } = this.state;
 
@@ -64,8 +67,8 @@ export default class Home extends Component {
 
                 <div className={styles.searcher} style={{ height: isSmallScreen ? "20%" : null }}>
                     <div style={{ opacity: isSmallScreen ? 1 : 0 }}>
-                        <ListIcon fontSize="large" style={{ "padding-left": "20px" }}
-                            color="disabled"
+                        <ListIcon fontSize="large" 
+                            
                             onClick={this.handleClick} />
                     </div>
                     <Search smallScreen={isSmallScreen} />

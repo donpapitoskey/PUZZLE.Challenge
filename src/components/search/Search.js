@@ -7,7 +7,7 @@ import CancelIcon from '@material-ui/icons/Cancel'
 import { connect } from 'react-redux'
 import {
     getSearchAction, updateNameAction, updateTypeAction,
-    eraseStoreAction, eraseNameFieldAction, eraseTypeFieldAction
+    eraseStoreAction, eraseNameFieldAction, eraseTypeFieldAction, setPageAction
 } from '../../redux/searchDuck'
 
 class Search extends Component {
@@ -37,6 +37,7 @@ class Search extends Component {
     enterPressed = (event) => {
         if (event.keyCode === 13 && (this.props.name.length > 2 || this.props.type.length > 2)) {
             this.props.eraseStoreAction();
+            this.props.setPageAction(1);
             this.props.getSearchAction();
 
         }
@@ -125,5 +126,5 @@ function mapStateToProps(store) {
 
 export default connect(mapStateToProps, {
     getSearchAction, updateNameAction, updateTypeAction, eraseStoreAction, eraseNameFieldAction
-    , eraseTypeFieldAction
+    , eraseTypeFieldAction, setPageAction
 })(Search)
