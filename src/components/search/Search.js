@@ -48,7 +48,7 @@ class Search extends Component {
             nameInput: ''
         })
         this.props.eraseNameFieldAction();
-        if (this.props.type !== '') {
+        if (this.props.type.lenght > 2) {
             this.props.getSearchAction();
         }
         else {
@@ -61,7 +61,7 @@ class Search extends Component {
             typeInput: ''
         })
         this.props.eraseTypeFieldAction();
-        if (this.props.name !== '') {
+        if (this.props.name.length > 2) {
             this.props.getSearchAction();
         }
         else {
