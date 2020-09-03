@@ -35,37 +35,39 @@ class Search extends Component {
     }
 
     enterPressed = (event) => {
+        const { eraseStoreAction, setPageAction, getSearchAction } = this.props
         if (event.keyCode === 13 && (this.props.name.length > 2 || this.props.type.length > 2)) {
-            this.props.eraseStoreAction();
-            this.props.setPageAction(1);
-            this.props.getSearchAction();
-
+            eraseStoreAction();
+            setPageAction(1);
+            getSearchAction();
         }
     }
 
     eraseName = () => {
+        const { type, eraseNameFieldAction, getSearchAction, eraseStoreAction } = this.props;
         this.setState({
             nameInput: ''
         })
-        this.props.eraseNameFieldAction();
-        if (this.props.type.lenght > 2) {
-            this.props.getSearchAction();
+        eraseNameFieldAction();
+        if (type.lenght > 2) {
+            getSearchAction();
         }
         else {
-            this.props.eraseStoreAction();
+            eraseStoreAction();
         }
     }
 
     eraseType = () => {
+        const { name, eraseTypeFieldAction, getSearchAction, eraseStoreAction } = this.props;
         this.setState({
             typeInput: ''
         })
-        this.props.eraseTypeFieldAction();
-        if (this.props.name.length > 2) {
-            this.props.getSearchAction();
+        eraseTypeFieldAction();
+        if (name.length > 2) {
+            getSearchAction();
         }
         else {
-            this.props.eraseStoreAction();
+            eraseStoreAction();
         }
     }
 

@@ -6,12 +6,12 @@ import { setFilterAction, getSearchAction, eraseStoreAction } from '../../redux/
 
 class Filter extends Component {
 
-
+    
     handleOptionChange = changeEvent => {
-
-        this.props.setFilterAction(changeEvent.target.value);
-        this.props.eraseStoreAction();
-        this.props.modalClosed();
+        let {setFilterAction, eraseStoreAction, modalClosed} = this.props;
+        setFilterAction(changeEvent.target.value);
+        eraseStoreAction();
+        modalClosed();
     };
 
     render() {

@@ -9,9 +9,9 @@ class Paginator extends Component {
 
 
     handleChange = (props, value) => {
-        console.log(value)
-        this.props.setPageAction(value);
-        this.props.getSearchAction();
+        let {setPageAction, getSearchAction} = this.props;
+        setPageAction(value);
+        getSearchAction();
     }
 
     render() {
