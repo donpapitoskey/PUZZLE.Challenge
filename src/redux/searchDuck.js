@@ -38,7 +38,7 @@ export default function reducer(state = initialData, action) {
         case ERASE_STORE:
             return { ...state, arr: action.payload, info: action.payload, error: "clean" }
         case REQUEST:
-            return { ...state, fetching: true } //lo que devuelvo
+            return { ...state, fetching: true }
         case REQUEST_ERROR:
             return { ...state, fetching: false, error: action.payload }
         case REQUEST_SUCCESS:
@@ -122,9 +122,9 @@ export let setFilterAction = (newFilter) => (dispatch, getState) => {
 
 }
 
-export function getSearchAction() { // action creator
-    return (dispatch, getState) => { //recibe dispatch y get state. dispatch hace la accion getstate brinda store :D
-        //return 
+export function getSearchAction() { 
+    return (dispatch, getState) => { 
+        
 
         let { typeOfSearch, searchingPage, searchName, searchType } = getState().search;
         let searchCriteria = '';
@@ -200,7 +200,7 @@ export function getSearchAction() { // action creator
             variables: {}
         });
 
-        return client.query({ // objeto al que se le pasan configuraciones
+        return client.query({ 
             query
         })
             .then(({ data }) => {

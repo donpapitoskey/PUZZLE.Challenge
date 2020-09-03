@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './lister.module.css'
 import Card from '../card/Card';
-import { connect } from 'react-redux'; //conectar componente con redux
+import { connect } from 'react-redux'; 
 
 class Lister extends Component {
 
@@ -52,6 +52,6 @@ function mapStateToProps(store) {
     }
 };
 
-export default connect(mapStateToProps)(Lister)  //sacar datos
+export default connect(mapStateToProps)(Lister)
 
 
