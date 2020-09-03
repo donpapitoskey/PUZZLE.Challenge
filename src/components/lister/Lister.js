@@ -5,41 +5,11 @@ import { connect } from 'react-redux'; //conectar componente con redux
 
 class Lister extends Component {
 
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-          prevScrollpos: window.pageYOffset,
-          visible: true
-        };
-      }
-    
-      // Adds an event listener when the component is mount.
-      componentDidMount() {
-        window.addEventListener("scroll", this.handleScroll);
-      }
-    
-      // Remove the event listener when the component is unmount.
-      componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll);
-      }
 
-    handleScroll = () => {
-        const { prevScrollpos } = this.state;
-    
-        const currentScrollPos = window.pageYOffset;
-        const visible = prevScrollpos > currentScrollPos;
-        console.log(currentScrollPos)
-        this.setState({
-          prevScrollpos: currentScrollPos,
-          visible
-        });
-      };
-    
     render() {
         let elements = [];
-
-        for (let element of this.props.res) {
+        let { fetching, err, retrievedArray } = this.props;
+        for (let element of retrievedArray) {
             elements.push(<Card
                 value={element}
                 name={element.name}
@@ -50,13 +20,13 @@ class Lister extends Component {
                 image={element.image} />)
         }
 
-        if (this.props.fetching) {
+        if (fetching) {
             return (
                 <div className={styles.container}>
                     <h2>Loading ...</h2>
                 </div>
             )
-        } else if (this.props.err !== "clean") {
+        } else if (err !== "clean") {
             return (
                 <div className={styles.containerError}>
                     <h2>Sorry Morty. Your search could not be achieved :(</h2>
@@ -66,7 +36,7 @@ class Lister extends Component {
         else {
 
             return (
-                <div className={styles.container} onScroll={this.handleScroll}>
+                <div className={styles.container} >
                     {elements}
                 </div>
             )
@@ -76,7 +46,7 @@ class Lister extends Component {
 
 function mapStateToProps(store) {
     return {
-        res: store.search.arr,
+        retrievedArray: store.search.arr,
         fetching: store.search.fetching,
         err: store.search.error
     }

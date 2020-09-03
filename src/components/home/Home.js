@@ -12,7 +12,6 @@ export default class Home extends Component {
         super(props);
         this.state = {
             windowWidth: 0,
-            windowHeight: 0,
             modalFilter: false
         };
         this.updateDimensions = this.updateDimensions.bind(this);
@@ -37,9 +36,9 @@ export default class Home extends Component {
 
     updateDimensions() {
         const windowWidth = window !== "undefined" ? window.innerWidth : 0;
-        const windowHeight = window !== "undefined" ? window.innerHeight : 0;
+        
 
-        this.setState({ windowWidth, windowHeight });
+        this.setState({ windowWidth });
     }
 
     currDate = {
@@ -55,7 +54,7 @@ export default class Home extends Component {
 
 
     render() {
-        const { windowWidth } = this.state;
+        const { windowWidth, modalFilter } = this.state;
 
         const isSmallScreen = windowWidth < 768;
 
@@ -76,7 +75,7 @@ export default class Home extends Component {
 
                     <div className={isSmallScreen ? styles.side_filterClosed : styles.side_filter} >
 
-                        <Filter modalClosed={this.handleClick} show={isSmallScreen ? this.state.modalFilter : true} small={isSmallScreen} />
+                        <Filter modalClosed={this.handleClick} show={isSmallScreen ? modalFilter : true} small={isSmallScreen} />
 
 
                     </div>

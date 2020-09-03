@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import classes from "./modal.module.css";
 import Backdrop from './Backdrop';
-import  Auxcard  from '../auxcard/Auxcard';
+import Auxcard from '../auxcard/Auxcard';
 import { connect } from 'react-redux';
 
 class Modal extends Component {
@@ -9,10 +9,11 @@ class Modal extends Component {
   render() {
 
     let elementos = [];
+    let { typeOfSearch, residents, show, value, modalClosed, chars } = this.props;
 
-    if (this.props.typeOfSearch === "locations") {
+    if (typeOfSearch === "locations") {
 
-      for (let element of this.props.residents.slice(0, 5)) {
+      for (let element of residents.slice(0, 5)) {
         elementos.push(<Auxcard value={element} />)
       }
 
@@ -20,46 +21,46 @@ class Modal extends Component {
 
         <div className={classes.Modal}
           style={{
-            transform: this.props.show ? 'translateY(0)' :
+            transform: show ? 'translateY(0)' :
               'translateY(-100vh)',
-            opacity: this.props.show ? 1 : 0
+            opacity: show ? 1 : 0
           }}>
           <div className={classes.content} >
-            <h2>{this.props.value.name}</h2>
-            <h3>Type: {this.props.value.type}</h3>
-            <h3>Dimension: {this.props.value.dimension}</h3>
+            <h2>{value.name}</h2>
+            <h3>Type: {value.type}</h3>
+            <h3>Dimension: {value.dimension}</h3>
             <h3>Residents:</h3>
             <div className={classes.aux_container}>
               {elementos}
             </div>
           </div>
-          <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
+          <Backdrop show={show} clicked={modalClosed} />
         </div>
 
       );
     }
-    else if (this.props.typeOfSearch === "episodes") {
-      for (let element of this.props.chars.slice(0, 5)) {
+    else if (typeOfSearch === "episodes") {
+      for (let element of chars.slice(0, 5)) {
         elementos.push(<Auxcard value={element} />)
       }
       return (
 
         <div className={classes.Modal}
           style={{
-            transform: this.props.show ? 'translateY(0)' :
+            transform: show ? 'translateY(0)' :
               'translateY(-100vh)',
-            opacity: this.props.show ? 1 : 0
+            opacity: show ? 1 : 0
           }}>
           <div className={classes.content} >
-            <h2>{this.props.value.name}</h2>
-            <h3> Creation date: {this.props.value.created}</h3>
-            <h3>{this.props.value.episode}</h3>
+            <h2>{value.name}</h2>
+            <h3> Creation date: {value.created}</h3>
+            <h3>{value.episode}</h3>
             <div> Characters</div>
             <div className={classes.aux_container}>
               {elementos}
             </div>
           </div>
-          <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
+          <Backdrop show={show} clicked={modalClosed} />
         </div>
       );
     } else {
@@ -68,22 +69,22 @@ class Modal extends Component {
 
         <div className={classes.Modal}
           style={{
-            transform: this.props.show ? 'translateY(0)' :
+            transform: show ? 'translateY(0)' :
               'translateY(-100vh)',
-            opacity: this.props.show ? 1 : 0
+            opacity: show ? 1 : 0
           }}>
           <div className={classes.content} >
-            <img src={this.props.value.image ? this.props.value.image : null}/>
-            <h2> {this.props.value.name}</h2>
-            <h3> Type: {this.props.value.type}</h3>
-            <h3>Genre: {this.props.value.gender}</h3>
-            <div> Specie: {this.props.value.species} </div>
+            <img src={value.image ? value.image : null} />
+            <h2> {value.name}</h2>
+            <h3> Type: {value.type}</h3>
+            <h3>Genre: {value.gender}</h3>
+            <div> Specie: {value.species} </div>
             <div className={classes.aux_container}>
               {elementos}
             </div>
           </div>
 
-          <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
+          <Backdrop show={show} clicked={modalClosed} />
         </div>
 
       );

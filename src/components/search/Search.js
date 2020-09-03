@@ -70,14 +70,19 @@ class Search extends Component {
     }
 
     render() {
+
+        let { smallScreen, name, type } = this.props;
+        let { nameInput, typeInput } = this.state;
+
         return (
             <div className={styles.container} style={{
-                "flex-flow" : this.props.smallScreen ? "column": null ,
-                "padding-left" : this.props.smallScreen ? "0" :null}}>
+                "flex-flow": smallScreen ? "column" : null,
+                "padding-left": smallScreen ? "0" : null
+            }}>
                 <div className={styles.container}>
                     <TextField
                         fullWidth
-                        value={this.state.nameInput}
+                        value={nameInput}
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="start">
@@ -89,14 +94,14 @@ class Search extends Component {
                         onChange={this.nameFieldChanged}
                         onKeyDown={this.enterPressed}
                     />
-                    <div className={styles.cancel} style={this.props.name ? null : { display: "none" }} onClick={this.eraseName}>
+                    <div className={styles.cancel} style={name ? null : { display: "none" }} onClick={this.eraseName}>
                         <CancelIcon />
                     </div>
                 </div>
                 <div className={styles.container}>
                     <TextField
                         fullWidth
-                        value={this.state.typeInput}
+                        value={typeInput}
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="start">
@@ -108,7 +113,7 @@ class Search extends Component {
                         onChange={this.typeFieldChanged}
                         onKeyDown={this.enterPressed}
                     />
-                    <div className={styles.cancel} style={this.props.type ? null : { display: "none" }} onClick={this.eraseType}>
+                    <div className={styles.cancel} style={type ? null : { display: "none" }} onClick={this.eraseType}>
                         <CancelIcon />
                     </div>
                 </div>

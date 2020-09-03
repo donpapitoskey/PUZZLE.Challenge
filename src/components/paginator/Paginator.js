@@ -7,12 +7,7 @@ import { setPageAction, getSearchAction } from '../../redux/searchDuck';
 
 class Paginator extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            selecterOption: "characters"
-        };
-    }
+
     handleChange = (props, value) => {
         console.log(value)
         this.props.setPageAction(value);
@@ -20,15 +15,17 @@ class Paginator extends Component {
     }
 
     render() {
+        let { info, page } = this.props;
+
         return (
             <div className={styles.container}>
                 <Pagination
-                    count={this.props.info.pages ? this.props.info.pages : 1}
+                    count={info.pages ? info.pages : 1}
 
                     shape={'round'}
                     siblingCount={2}
                     boundaryCount={1}
-                    page={this.props.page}
+                    page={page}
                     onChange={this.handleChange}
                     variant="outlined" />
             </div>
