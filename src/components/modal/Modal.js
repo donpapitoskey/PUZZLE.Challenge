@@ -8,14 +8,10 @@ class Modal extends Component {
 
   render() {
 
-    let elementos = [];
+    
     let { typeOfSearch, residents, show, value, modalClosed, chars } = this.props;
 
     if (typeOfSearch === "locations") {
-
-      for (let element of residents.slice(0, 5)) {
-        elementos.push(<Auxcard value={element} />)
-      }
 
       return (
 
@@ -27,11 +23,13 @@ class Modal extends Component {
           }}>
           <div className={classes.content} >
             <h2>{value.name}</h2>
-            <h3>Type: {value.type}</h3>
+            {value.type ? <h3>Type: {value.type}</h3> : null}
             <h3>Dimension: {value.dimension}</h3>
             <h3>Residents:</h3>
             <div className={classes.aux_container}>
-              {elementos}
+              {residents.slice(0,5).map(element => (
+                <Auxcard value={element} />
+              ))}
             </div>
           </div>
           <Backdrop show={show} clicked={modalClosed} />
@@ -40,9 +38,6 @@ class Modal extends Component {
       );
     }
     else if (typeOfSearch === "episodes") {
-      for (let element of chars.slice(0, 5)) {
-        elementos.push(<Auxcard value={element} />)
-      }
       return (
 
         <div className={classes.Modal}
@@ -57,7 +52,9 @@ class Modal extends Component {
             <h3>{value.episode}</h3>
             <div> Characters</div>
             <div className={classes.aux_container}>
-              {elementos}
+              {chars.slice(0,5).map(element => (
+                <Auxcard value = {element} />
+              ))}
             </div>
           </div>
           <Backdrop show={show} clicked={modalClosed} />
@@ -76,12 +73,10 @@ class Modal extends Component {
           <div className={classes.content} >
             <img src={value.image ? value.image : null} />
             <h2> {value.name}</h2>
-            <h3> Type: {value.type}</h3>
+            {value.type ? <h3> Type: {value.type}</h3> : null}
             <h3>Genre: {value.gender}</h3>
-            <div> Specie: {value.species} </div>
-            <div className={classes.aux_container}>
-              {elementos}
-            </div>
+            <p> Specie: {value.species} </p>
+            
           </div>
 
           <Backdrop show={show} clicked={modalClosed} />
