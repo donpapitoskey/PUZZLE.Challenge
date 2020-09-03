@@ -3,7 +3,7 @@ import styles from './home.module.css';
 import Filter from '../filter/Filter';
 import Search from '../search/Search';
 import Lister from '../lister/Lister';
-import Pages from '../pages/Pages';
+import Paginator from '../paginator/Paginator';
 import ListIcon from '@material-ui/icons/List';
 
 export default class Home extends Component {
@@ -13,10 +13,8 @@ export default class Home extends Component {
         this.state = {
             windowWidth: 0,
             windowHeight: 0,
-            modalFilter: false,
-            
+            modalFilter: false
         };
-
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
@@ -38,8 +36,8 @@ export default class Home extends Component {
     }
 
     updateDimensions() {
-        let windowWidth = typeof window !== "undefined" ? window.innerWidth : 0;
-        let windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
+        const windowWidth = window !== "undefined" ? window.innerWidth : 0;
+        const windowHeight = window !== "undefined" ? window.innerHeight : 0;
 
         this.setState({ windowWidth, windowHeight });
     }
@@ -67,8 +65,8 @@ export default class Home extends Component {
 
                 <div className={styles.searcher} style={{ height: isSmallScreen ? "20%" : null }}>
                     <div style={{ opacity: isSmallScreen ? 1 : 0 }}>
-                        <ListIcon fontSize="large" 
-                            
+                        <ListIcon fontSize="large"
+
                             onClick={this.handleClick} />
                     </div>
                     <Search smallScreen={isSmallScreen} />
@@ -84,7 +82,7 @@ export default class Home extends Component {
                     </div>
                     <div className={styles.mainBlock} style={{ width: isSmallScreen ? "100%" : null }}>
                         <Lister />
-                        <Pages />
+                        <Paginator />
                     </div>
                 </div>
                 <div className={styles.signature} >

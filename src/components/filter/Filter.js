@@ -15,13 +15,14 @@ class Filter extends Component {
     };
 
     render() {
+        let {filterOption, small, show, modalClosed} = this.props
         return (
             <div>
-                <div className={this.props.small ? styles.containerSmall : styles.container}
+                <div className={small ? styles.containerSmall : styles.container}
                     style={{
-                        transform: this.props.show ? 'translateX(0)' :
+                        transform: show ? 'translateX(0)' :
                             'translateX(-100vh)',
-                        opacity: this.props.show ? 1 : 0
+                        opacity: show ? 1 : 0
                     }}
                     >
                     <h3>Filters</h3>
@@ -31,7 +32,7 @@ class Filter extends Component {
                             name="filter"
                             className="form-check-input"
                             value="characters"
-                            checked={this.props.filterOption === "characters"}
+                            checked={filterOption === "characters"}
                             onChange={this.handleOptionChange} /> Characters
                 </label>
                     <label>
@@ -40,7 +41,7 @@ class Filter extends Component {
                             name="filter"
                             className="form-check-input"
                             value="locations"
-                            checked={this.props.filterOption === 'locations'}
+                            checked={filterOption === 'locations'}
                             onChange={this.handleOptionChange} /> Locations
                 </label>
                     <label>
@@ -49,11 +50,11 @@ class Filter extends Component {
                             name="filter"
                             value="episodes"
                             className="form-check-input"
-                            checked={this.props.filterOption === 'episodes'}
+                            checked={filterOption === 'episodes'}
                             onChange={this.handleOptionChange} /> Episodes
                 </label>
                 </div>
-                <Backdrop show={this.props.show && this.props.small} clicked={this.props.modalClosed} />
+                <Backdrop show={show && small} clicked={modalClosed} />
 
             </div>
         )

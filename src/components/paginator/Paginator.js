@@ -1,11 +1,11 @@
 
 import React, { Component } from 'react'
-import styles from './pages.module.css'
+import styles from './paginator.module.css'
 import Pagination from '@material-ui/lab/Pagination'
 import { connect } from 'react-redux'
 import { setPageAction, getSearchAction } from '../../redux/searchDuck';
 
-class Pages extends Component {
+class Paginator extends Component {
 
     constructor(props) {
         super(props);
@@ -43,4 +43,4 @@ function mapStateToProps(store) {
     }
 }
 
-export default connect(mapStateToProps, { setPageAction, getSearchAction })(Pages)
+export default connect(mapStateToProps, { setPageAction, getSearchAction })(Paginator)

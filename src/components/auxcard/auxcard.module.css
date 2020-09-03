@@ -1,0 +1,17 @@
+.container{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 25px;
+    border-width: 1px;
+    border-style: solid;
+    border-left-color: white;
+    border-top-color: white ;
+    border-right-color: black;
+    border-bottom-color: black;
+    background-color: rgb(255, 255, 255);
+    width: 200px;
+    justify-content: center;
+    margin: 30px;
+    transition: transform 0.33s;
+}

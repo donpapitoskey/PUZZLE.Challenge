@@ -8,14 +8,14 @@ import generateStore from './redux/store';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
-let store = generateStore(); //crear store
+const store = generateStore();
 
-let client = new ApolloClient({
+const client = new ApolloClient({
   uri: "https://rickandmortyapi.com/graphql"
 })
 
-let WithStore = () => <Provider store={store}><App /></Provider>
-let WithApollo = () => <ApolloProvider client={client}><WithStore /></ApolloProvider>
+const WithStore = () => <Provider store={store}><App /></Provider>
+const WithApollo = () => <ApolloProvider client={client}><WithStore /></ApolloProvider>
 
 ReactDOM.render(
   <React.StrictMode>

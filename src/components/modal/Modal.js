@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import classes from "./modal.module.css";
 import Backdrop from './Backdrop';
-import { Auxcard } from '../card/Card';
+import  Auxcard  from '../auxcard/Auxcard';
 import { connect } from 'react-redux';
 
 class Modal extends Component {

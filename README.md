@@ -1,5 +1,43 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### React Challenge - Of Rick & Morty 
+
+This is a project developed to explore the design of an application to consume Back-end information of topic -Rick & Morty-. 
+
+The application itself allows the user to search for names of characters, episodes or locations of the series and retrieve the informatión from this [API](https://rickandmortyapi.com/graphql).
+
+
+
+
+## Main libraries
+
+The necessary libraries for the development of this project were:
+
+    - "@material-ui/core": "^4.11.0"
+    - "@material-ui/icons": "^4.9.1"
+    - "@material-ui/lab": "^4.0.0-alpha.56"
+    - "@testing-library/jest-dom": "^5.11.3"
+    - "@testing-library/react": "^10.4.8"
+    - "@testing-library/user-event": "^12.1.1"
+    - "apollo-boost": "^0.4.9"
+    - "apollo-client": "^2.6.10"
+    - "bulma": "^0.9.0"
+    - "cra-template": "1.0.3"
+    - "graphql": "^15.3.0"
+    - "node-sass": "^4.14.1"
+    - "prop-types": "^15.7.2"
+    - "react": "^16.13.1"
+    - "react-apollo": "^3.1.5"
+    - "react-bootstrap": "^1.3.0"
+    - "react-dom": "^16.13.1"
+    - "react-fontawesome": "^1.7.1"
+    - "react-modal": "^3.11.2"
+    - "react-redux": "^7.2.1"
+    - "react-scripts": "3.4.3"
+    - "redux": "^4.0.5"
+    - "redux-devtools": "^3.6.1"
+    - "redux-thunk": "^2.3.0"
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -26,43 +64,3 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
