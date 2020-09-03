@@ -1,24 +1,14 @@
 import React, { Component } from 'react'
 import styles from './lister.module.css'
 import Card from '../card/Card';
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 
 class Lister extends Component {
 
 
     render() {
-        let elements = [];
         let { fetching, err, retrievedArray } = this.props;
-        for (let element of retrievedArray) {
-            elements.push(<Card
-                value={element}
-                name={element.name}
-                episode={element.episode}
-                created={element.created}
-                type={element.type}
-                dimension={element.dimension}
-                image={element.image} />)
-        }
+
 
         if (fetching) {
             return (
@@ -37,7 +27,17 @@ class Lister extends Component {
 
             return (
                 <div className={styles.container} >
-                    {elements}
+                    {retrievedArray.map(element => (
+                        <Card
+                            value={element}
+                            name={element.name}
+                            episode={element.episode}
+                            created={element.created}
+                            type={element.type}
+                            dimension={element.dimension}
+                            image={element.image}
+                        />
+                    ))}
                 </div>
             )
         }
