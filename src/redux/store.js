@@ -1,5 +1,5 @@
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
-import searchReducer from './searchDuck';
+import searchReducer from './searchReducer';
 import thunk from 'redux-thunk'; 
 
 

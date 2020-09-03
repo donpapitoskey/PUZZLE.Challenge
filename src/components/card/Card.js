@@ -33,10 +33,8 @@ export default class Card extends Component {
                         <h4>{type && !image ? this.props.type : null}</h4>
                         <p>{episode ? episode : null}</p>
                         <p>{dimension ? dimension : null}</p>
-
                     </label>
                     <img src={image ? image : null} height={image ? "200px" : null} />
-
                 </div>
                 <Modal show={modalToggle}
                     modalClosed={this.modalHandler}
@@ -56,6 +54,7 @@ Card.propTypes = {
     created: PropTypes.string,
     episode: PropTypes.string,
     type: PropTypes.string,
-    dimension: PropTypes.string
+    dimension: PropTypes.string,
+    //shape
 }
 

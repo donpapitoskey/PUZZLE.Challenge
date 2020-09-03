@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import {
     getSearchAction, updateNameAction, updateTypeAction,
     eraseStoreAction, eraseNameFieldAction, eraseTypeFieldAction, setPageAction
-} from '../../redux/searchDuck'
+} from '../../redux/Actions'
 
 class Search extends Component {
 

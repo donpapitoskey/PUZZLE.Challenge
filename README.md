@@ -6,8 +6,20 @@ This is a project developed to explore the design of an application to consume B
 
 The application itself allows the user to search for names of characters, episodes or locations of the series and retrieve the informatión from this [API](https://rickandmortyapi.com/graphql).
 
+In the left section of the page, the user can select the type of search the application will perform between "Characters", "Locations" and "Episodes". In the upper section, the user can write down the search criteria words in two search boxes; one for the "Name" field and another for "Type" field. A screenshot of the main view is shown below: 
+![mainView](https://user-images.githubusercontent.com/59004502/92009119-a5308680-ed0d-11ea-9423-d987434f0b47.PNG)
 
+For the search to work properly, the user must write down more than 3 letters in one of the fields and press `Enter`. The search will obtain cards with information related to the criteria searche fields. In example, for obtaining information cards about the characters with the letters `rick`, the application will display some the screen shown below:
+![image](https://user-images.githubusercontent.com/59004502/92009022-803c1380-ed0d-11ea-88a9-7e2de6361c29.png)
 
+Once obtained the cards, the user can click the cards and display further information about the selected character/location/episode as shown in the image below:
+![image](https://user-images.githubusercontent.com/59004502/92009872-baf27b80-ed0e-11ea-8f79-f0fe7b95ba2a.png).
+
+If the back end could not resolve the search, a screen will be displayed as shown below:
+
+![image](https://user-images.githubusercontent.com/59004502/92010234-2f2d1f00-ed0f-11ea-8b1b-0f99c7328e7e.png)
+
+##
 
 ## Main libraries
 
@@ -41,6 +53,10 @@ The necessary libraries for the development of this project were:
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn install`
+
+Installs the necessary libraries listed above.
 
 ### `yarn start`
 

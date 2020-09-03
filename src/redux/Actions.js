@@ -1,67 +1,13 @@
-import ApolloClient, { gql } from 'apollo-boost'
+import client from '../services/apollo';
+import {
+    REQUEST, REQUEST_SUCCESS
+    , REQUEST_ERROR, FILTER_CHANGED,
+    PAGE_CHANGED, ERASE_STORE,
+    UPDATE_NAME_BOX, ERASE_NAME_FIELD,
+    UPDATE_TYPE_BOX, ERASE_TYPE_FIELD
+} from './ActionsType';
 
-//constants
-let initialData = {
-    fetching: false,
-    arr: [],
-    info: {},
-    typeOfSearch: 'characters',
-    searchingPage: 1,
-    searchName: '',
-    searchType: "",
-    error: "clean"
-}
-
-let client = new ApolloClient({
-    uri: "https://rickandmortyapi.com/graphql"
-})
-
-const REQUEST = "REQUEST"
-const REQUEST_SUCCESS = "REQUEST_SUCCESS"
-const REQUEST_ERROR = "REQUEST_ERROR"
-
-const FILTER_CHANGED = "FILTER_CHANGED"
-const PAGE_CHANGED = "PAGE_CHANGED"
-
-const ERASE_STORE = "ERASE_STORE"
-
-
-const UPDATE_NAME_BOX = "UPDATE_NAME_BOX"
-const ERASE_NAME_FIELD = "ERASE_NAME_FIELD"
-
-const UPDATE_TYPE_BOX = "UPDATE_TYPE_BOX"
-const ERASE_TYPE_FIELD = "ERASE_TYPE_FIELD"
-//Reducer
-
-export default function reducer(state = initialData, action) {
-    switch (action.type) {
-        case ERASE_STORE:
-            return { ...state, arr: action.payload, info: action.payload, error: "clean" }
-        case REQUEST:
-            return { ...state, fetching: true }
-        case REQUEST_ERROR:
-            return { ...state, fetching: false, error: action.payload }
-        case REQUEST_SUCCESS:
-            return { ...state, fetching: false, arr: action.payload.results, info: action.payload.info }
-        case FILTER_CHANGED:
-            return { ...state, typeOfSearch: action.payload }
-        case PAGE_CHANGED:
-            return { ...state, searchingPage: action.payload }
-        case UPDATE_NAME_BOX:
-            return { ...state, searchName: action.payload }
-        case UPDATE_TYPE_BOX:
-            return { ...state, searchType: action.payload }
-        case ERASE_TYPE_FIELD:
-            return { ...state, searchType: action.payload }
-        case ERASE_NAME_FIELD:
-            return { ...state, searchName: action.payload }
-        default:
-            return state
-    }
-
-}
-
-//Actions 
+import { gql } from 'apollo-boost';
 
 export let eraseNameFieldAction = () => (dispatch, getState) => {
     dispatch({
@@ -122,9 +68,9 @@ export let setFilterAction = (newFilter) => (dispatch, getState) => {
 
 }
 
-export function getSearchAction() { 
-    return (dispatch, getState) => { 
-        
+export function getSearchAction() {
+    return (dispatch, getState) => {
+
 
         let { typeOfSearch, searchingPage, searchName, searchType } = getState().search;
         let searchCriteria = '';
@@ -200,7 +146,7 @@ export function getSearchAction() {
             variables: {}
         });
 
-        return client.query({ 
+        return client.query({
             query
         })
             .then(({ data }) => {

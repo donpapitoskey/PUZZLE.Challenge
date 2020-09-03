@@ -1,0 +1,15 @@
+
+export const REQUEST = "REQUEST"
+export const REQUEST_SUCCESS = "REQUEST_SUCCESS"
+export const REQUEST_ERROR = "REQUEST_ERROR"
+
+export const FILTER_CHANGED = "FILTER_CHANGED"
+export const PAGE_CHANGED = "PAGE_CHANGED"
+
+export const ERASE_STORE = "ERASE_STORE"
+
+export const UPDATE_NAME_BOX = "UPDATE_NAME_BOX"
+export const ERASE_NAME_FIELD = "ERASE_NAME_FIELD"
+
+export const UPDATE_TYPE_BOX = "UPDATE_TYPE_BOX"
+export const ERASE_TYPE_FIELD = "ERASE_TYPE_FIELD"

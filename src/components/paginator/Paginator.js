@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import styles from './paginator.module.css'
 import Pagination from '@material-ui/lab/Pagination'
 import { connect } from 'react-redux'
-import { setPageAction, getSearchAction } from '../../redux/searchDuck';
+import { setPageAction, getSearchAction } from '../../redux/Actions';
 
 class Paginator extends Component {
 

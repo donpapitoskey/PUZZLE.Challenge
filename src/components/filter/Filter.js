@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styles from './filter.module.css'
 import Backdrop from '../modal/Backdrop';
 import { connect } from 'react-redux';
-import { setFilterAction, getSearchAction, eraseStoreAction } from '../../redux/searchDuck';
+import { setFilterAction, getSearchAction, eraseStoreAction } from '../../redux/Actions';
 
 class Filter extends Component {
 
