@@ -5,10 +5,8 @@ import { connect } from 'react-redux';
 
 class Lister extends Component {
 
-
     render() {
         let { fetching, err, retrievedArray } = this.props;
-
 
         if (fetching) {
             return (
@@ -16,7 +14,8 @@ class Lister extends Component {
                     <h2>Loading ...</h2>
                 </div>
             )
-        } else if (err !== "clean") {
+        }
+        if (err !== "clean") {
             return (
                 <div className={styles.containerError}>
                     <h2>Sorry Morty. Your search could not be achieved :(</h2>
