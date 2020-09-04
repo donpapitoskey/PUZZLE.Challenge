@@ -3,7 +3,7 @@ import {
     REQUEST_EPISODES_SUCCESS,
     REQUEST_ERROR, FILTER_CHANGED,
     REQUEST_LOCATIONS_SUCCESS,
-    PAGE_CHANGED, ERASE_STORE,
+    PAGE_CHANGED, CLEAN_ERROR,
     UPDATE_NAME_BOX, ERASE_NAME_FIELD,
     UPDATE_TYPE_BOX, ERASE_TYPE_FIELD
 } from './ActionsType';
@@ -15,7 +15,9 @@ let initialData = {
     arrChars: [],
     arrLoc: [],
     arrEp: [],
-    info: {},
+    infoChars: {},
+    infoLoc: {},
+    infoEp: {},
     typeOfSearch: 'characters',
     searchingPage: 1,
     searchName: '',
@@ -28,20 +30,20 @@ let initialData = {
 
 export default function reducer(state = initialData, action) {
     switch (action.type) {
-        case ERASE_STORE:
-            return { ...state, arr: action.payload, info: action.payload, error: "clean" }
+        case CLEAN_ERROR:
+            return { ...state, error: "clean" }
         case REQUEST:
             return { ...state, fetching: true }
         case REQUEST_ERROR:
             return { ...state, fetching: false, error: action.payload }
         case REQUEST_CHARACTERS_SUCCESS:
-            return { ...state, fetching: false, arrChars: action.payload.results, info: action.payload.info }
+            return { ...state, fetching: false, arrChars: action.payload.results, infoChars: action.payload.info }
         case REQUEST_LOCATIONS_SUCCESS:
-            return { ...state, fetching: false, arrLoc: action.payload.results, info: action.payload.info }
+            return { ...state, fetching: false, arrLoc: action.payload.results, infoLoc: action.payload.info }
         case REQUEST_EPISODES_SUCCESS:
-            return { ...state, fetching: false, arrEp: action.payload.results, info: action.payload.info }
+            return { ...state, fetching: false, arrEp: action.payload.results, infoEp: action.payload.info }
         case FILTER_CHANGED:
-            return { ...state, typeOfSearch: action.payload }
+            return { ...state, typeOfSearch: action.payload, searchingPage: 1 }
         case PAGE_CHANGED:
             return { ...state, searchingPage: action.payload }
         case UPDATE_NAME_BOX:

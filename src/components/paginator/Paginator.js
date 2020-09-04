@@ -15,8 +15,21 @@ class Paginator extends Component {
     }
 
     render() {
-        let { info, page } = this.props;
-
+        let { infoChars, infoLoc, infoEp, page, filterOption } = this.props;
+        let info = {};
+        switch (filterOption) {
+            case "locations":
+                info = infoLoc;
+                break;
+            case "episodes":
+                info = infoEp;
+                break;
+            case "characters":
+                info = infoChars;
+                break;
+            default:
+                break
+        }
         return (
             <div className={styles.container}>
                 <Pagination
@@ -35,8 +48,11 @@ class Paginator extends Component {
 }
 function mapStateToProps(store) {
     return {
-        info: store.search.info,
-        page: store.search.searchingPage
+        infoChars: store.search.infoChars,
+        infoLoc: store.search.infoLoc,
+        infoEp: store.search.infoEp,
+        page: store.search.searchingPage,
+        filterOption: store.search.typeOfSearch
     }
 }
 

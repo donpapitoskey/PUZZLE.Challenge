@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import styles from './filter.module.css'
 import Backdrop from '../modal/Backdrop';
 import { connect } from 'react-redux';
-import { setFilterAction, getSearchAction, eraseStoreAction } from '../../redux/Actions';
+import { setFilterAction, getSearchAction, cleanErrorAction } from '../../redux/Actions';
 
 class Filter extends Component {
 
     
     handleOptionChange = changeEvent => {
-        let {setFilterAction, modalClosed} = this.props;
+        let {setFilterAction, modalClosed, cleanErrorAction} = this.props;
+        cleanErrorAction();
         setFilterAction(changeEvent.target.value);
         modalClosed();
     };
@@ -67,4 +68,4 @@ function mapStateToProps(store) {
     }
 };
 
-export default connect(mapStateToProps, { setFilterAction, getSearchAction, eraseStoreAction })(Filter);
+export default connect(mapStateToProps, { setFilterAction, getSearchAction, cleanErrorAction })(Filter);

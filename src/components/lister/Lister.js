@@ -7,36 +7,29 @@ class Lister extends Component {
 
     render() {
         let { fetching, err, characters, filterOption, locations, episodes } = this.props;
-
+        let retrievedArray = [];
+        switch (filterOption) {
+            case "locations":
+                retrievedArray = locations;
+                break;
+            case "episodes":
+                retrievedArray = episodes;
+                break;
+            case "characters":
+                retrievedArray = characters;
+                break;
+            default:
+                break
+        }
         if (fetching) {
             return (
                 <div className={styles.container}>
                     <h2>Loading ...</h2>
                 </div>
             )
-        }
-        if (err !== "clean") {
-            return (
-                <div className={styles.containerError}>
-                    <h2>Sorry Morty. Your search could not be achieved :(</h2>
-                    <h3>Give it another try with new values :D</h3>
-                </div>)
-        }
-        else {
-            let retrievedArray = [];
-            switch (filterOption) {
-                case "locations":
-                    retrievedArray = locations;
-                    break;
-                case "episodes":
-                    retrievedArray = episodes;
-                    break;
-                case "characters":
-                    retrievedArray = characters;
-                    break;
-                default:
-                    break
-            }
+        } 
+        if (retrievedArray && err === "clean") {
+
             return (
                 <div className={styles.container} >
                     {retrievedArray.map(element => (
@@ -53,6 +46,14 @@ class Lister extends Component {
                 </div>
             )
         }
+        if (err !== "clean") {
+            return (
+                <div className={styles.containerError}>
+                    <h2>Sorry Morty. Your search could not be achieved :(</h2>
+                    <h3>Give it another try with new values :D</h3>
+                </div>)
+        }
+
     }
 };
 

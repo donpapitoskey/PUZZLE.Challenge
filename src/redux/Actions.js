@@ -4,7 +4,7 @@ import {
     REQUEST_EPISODES_SUCCESS,
     REQUEST_ERROR, FILTER_CHANGED,
     REQUEST_LOCATIONS_SUCCESS,
-    PAGE_CHANGED, ERASE_STORE,
+    PAGE_CHANGED, CLEAN_ERROR,
     UPDATE_NAME_BOX, ERASE_NAME_FIELD,
     UPDATE_TYPE_BOX, ERASE_TYPE_FIELD
 } from './ActionsType';
@@ -41,9 +41,10 @@ export let updateNameAction = (updatedName) => (dispatch, getState) => {
     })
 }
 
-export let eraseStoreAction = () => (dispatch, getState) => {
+export let cleanErrorAction = () => (dispatch, getState) => {
+    console.log("Here it was")
     dispatch({
-        type: ERASE_STORE,
+        type: CLEAN_ERROR,
         payload: []
     })
 }

@@ -7,7 +7,7 @@ import CancelIcon from '@material-ui/icons/Cancel'
 import { connect } from 'react-redux'
 import {
     getSearchAction, updateNameAction, updateTypeAction,
-    eraseStoreAction, eraseNameFieldAction, eraseTypeFieldAction, setPageAction
+    cleanErrorAction, eraseNameFieldAction, eraseTypeFieldAction, setPageAction
 } from '../../redux/Actions'
 
 class Search extends Component {
@@ -35,16 +35,16 @@ class Search extends Component {
     }
 
     enterPressed = (event) => {
-        const { eraseStoreAction, setPageAction, getSearchAction } = this.props
+        const { cleanErrorAction, setPageAction, getSearchAction } = this.props
         if (event.keyCode === 13 && (this.props.name.length > 2 || this.props.type.length > 2)) {
-            eraseStoreAction();
+            cleanErrorAction();
             setPageAction(1);
             getSearchAction();
         }
     }
 
     eraseName = () => {
-        const { type, eraseNameFieldAction, getSearchAction, eraseStoreAction } = this.props;
+        const { type, eraseNameFieldAction, getSearchAction, cleanErrorAction } = this.props;
         this.setState({
             nameInput: ''
         })
@@ -53,12 +53,12 @@ class Search extends Component {
             getSearchAction();
         }
         else {
-            eraseStoreAction();
+            cleanErrorAction();
         }
     }
 
     eraseType = () => {
-        const { name, eraseTypeFieldAction, getSearchAction, eraseStoreAction } = this.props;
+        const { name, eraseTypeFieldAction, getSearchAction, cleanErrorAction } = this.props;
         this.setState({
             typeInput: ''
         })
@@ -67,13 +67,13 @@ class Search extends Component {
             getSearchAction();
         }
         else {
-            eraseStoreAction();
+            cleanErrorAction();
         }
     }
 
     render() {
 
-        let { smallScreen, name, type } = this.props;
+        let { smallScreen, name, type, filterOption } = this.props;
         let { nameInput, typeInput } = this.state;
 
         return (
@@ -100,7 +100,7 @@ class Search extends Component {
                         <CancelIcon />
                     </div>
                 </div>
-                <div className={styles.container}>
+                {filterOption === "episodes" ? null : <div className={styles.container}>
                     <TextField
                         fullWidth
                         value={typeInput}
@@ -118,7 +118,7 @@ class Search extends Component {
                     <div className={styles.cancel} style={type ? null : { display: "none" }} onClick={this.eraseType}>
                         <CancelIcon />
                     </div>
-                </div>
+                </div>}
             </div>
         )
     }
@@ -127,11 +127,12 @@ class Search extends Component {
 function mapStateToProps(store) {
     return {
         name: store.search.searchName,
-        type: store.search.searchType
+        type: store.search.searchType,
+        filterOption: store.search.typeOfSearch
     }
 }
 
 export default connect(mapStateToProps, {
-    getSearchAction, updateNameAction, updateTypeAction, eraseStoreAction, eraseNameFieldAction
+    getSearchAction, updateNameAction, updateTypeAction, cleanErrorAction, eraseNameFieldAction
     , eraseTypeFieldAction, setPageAction
 })(Search)
