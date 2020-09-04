@@ -38,7 +38,14 @@ export default class Card extends Component {
                 </div>
                 <Modal show={modalToggle}
                     modalClosed={this.modalHandler}
-                    value={value}
+                    name={name}
+                    image={image}
+                    type={type}
+                    episode={episode}
+                    dimension={dimension}
+                    created={created}
+                    gender={value.gender}
+                    species={value.species}
                     chars={value.characters ? value.characters : null}
                     residents={value.residents ? value.residents : null} />
             </div>
@@ -67,7 +74,6 @@ Card.propTypes = {
         created: PropTypes.string,
         residents: PropTypes.arrayOf(PropTypes.string),
         characters: PropTypes.arrayOf(PropTypes.string)
-
     })
 }
 

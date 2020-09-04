@@ -9,8 +9,8 @@ class Modal extends Component {
 
   render() {
 
-    
-    let { typeOfSearch, residents, show, value, modalClosed, chars } = this.props;
+
+    let { dimension, created, gender, species, episode, name, type, image, typeOfSearch, residents, show, modalClosed, chars } = this.props;
 
     if (typeOfSearch === "locations") {
 
@@ -23,12 +23,12 @@ class Modal extends Component {
             opacity: show ? 1 : 0
           }}>
           <div className={classes.content} >
-            <h2>{value.name}</h2>
-            {value.type ? <h3>Type: {value.type}</h3> : null}
-            <h3>Dimension: {value.dimension}</h3>
+            <h2>{name}</h2>
+            {type ? <h3>Type: {type}</h3> : null}
+            <h3>Dimension: {dimension}</h3>
             <h3>Residents:</h3>
             <div className={classes.aux_container}>
-              {residents.slice(0,5).map(element => (
+              {residents.slice(0, 5).map(element => (
                 <Auxcard name={element.name} />
               ))}
             </div>
@@ -48,13 +48,13 @@ class Modal extends Component {
             opacity: show ? 1 : 0
           }}>
           <div className={classes.content} >
-            <h2>{value.name}</h2>
-            <h3> Creation date: {value.created}</h3>
-            <h3>{value.episode}</h3>
+            <h2>{name}</h2>
+            <h3> Creation date: {created}</h3>
+            <h3>{episode}</h3>
             <div> Characters</div>
             <div className={classes.aux_container}>
-              {chars.slice(0,5).map(element => (
-                <Auxcard name = {element.name} />
+              {chars.slice(0, 5).map(element => (
+                <Auxcard name={element.name} />
               ))}
             </div>
           </div>
@@ -72,12 +72,12 @@ class Modal extends Component {
             opacity: show ? 1 : 0
           }}>
           <div className={classes.content} >
-            <img src={value.image ? value.image : null} />
-            <h2> {value.name}</h2>
-            {value.type ? <h3> Type: {value.type}</h3> : null}
-            <h3>Genre: {value.gender}</h3>
-            <p> Specie: {value.species} </p>
-            
+            <img src={image ? image : null} />
+            <h2> {name}</h2>
+            {type ? <h3> Type: {type}</h3> : null}
+            <h3>Genre: {gender}</h3>
+            <p> Specie: {species} </p>
+
           </div>
 
           <Backdrop show={show} clicked={modalClosed} />
@@ -91,16 +91,14 @@ class Modal extends Component {
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   modalClosed: PropTypes.func.isRequired,
-  value: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string,
-    dimension: PropTypes.string,
-    image: PropTypes.string,
-    gender: PropTypes.string,
-    species: PropTypes.string,
-    episode: PropTypes.string,
-    created: PropTypes.string
-  }),
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  dimension: PropTypes.string,
+  image: PropTypes.string,
+  episode: PropTypes.string,
+  created: PropTypes.string,
+  gender: PropTypes.string,
+  species: PropTypes.string,
   chars: PropTypes.arrayOf(PropTypes.string),
   residents: PropTypes.arrayOf(PropTypes.string)
 }
