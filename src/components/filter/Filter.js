@@ -8,9 +8,8 @@ class Filter extends Component {
 
     
     handleOptionChange = changeEvent => {
-        let {setFilterAction, eraseStoreAction, modalClosed} = this.props;
+        let {setFilterAction, modalClosed} = this.props;
         setFilterAction(changeEvent.target.value);
-        eraseStoreAction();
         modalClosed();
     };
 

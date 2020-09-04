@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class Lister extends Component {
 
     render() {
-        let { fetching, err, retrievedArray } = this.props;
+        let { fetching, err, characters, filterOption, locations, episodes } = this.props;
 
         if (fetching) {
             return (
@@ -23,7 +23,20 @@ class Lister extends Component {
                 </div>)
         }
         else {
-
+            let retrievedArray = [];
+            switch (filterOption) {
+                case "locations":
+                    retrievedArray = locations;
+                    break;
+                case "episodes":
+                    retrievedArray = episodes;
+                    break;
+                case "characters":
+                    retrievedArray = characters;
+                    break;
+                default:
+                    break
+            }
             return (
                 <div className={styles.container} >
                     {retrievedArray.map(element => (
@@ -45,7 +58,10 @@ class Lister extends Component {
 
 function mapStateToProps(store) {
     return {
-        retrievedArray: store.search.arr,
+        filterOption: store.search.typeOfSearch,
+        characters: store.search.arrChars,
+        locations: store.search.arrLoc,
+        episodes: store.search.arrEp,
         fetching: store.search.fetching,
         err: store.search.error
     }

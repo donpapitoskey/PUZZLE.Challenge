@@ -1,7 +1,9 @@
 import client from '../services/apollo';
 import {
-    REQUEST, REQUEST_SUCCESS
-    , REQUEST_ERROR, FILTER_CHANGED,
+    REQUEST, REQUEST_CHARACTERS_SUCCESS,
+    REQUEST_EPISODES_SUCCESS,
+    REQUEST_ERROR, FILTER_CHANGED,
+    REQUEST_LOCATIONS_SUCCESS,
     PAGE_CHANGED, ERASE_STORE,
     UPDATE_NAME_BOX, ERASE_NAME_FIELD,
     UPDATE_TYPE_BOX, ERASE_TYPE_FIELD
@@ -154,19 +156,19 @@ export function getSearchAction() {
                 switch (typeOfSearch) {
                     case "episodes":
                         dispatch({
-                            type: REQUEST_SUCCESS,
+                            type: REQUEST_EPISODES_SUCCESS,
                             payload: data.episodes
                         })
                         break
                     case "locations":
                         dispatch({
-                            type: REQUEST_SUCCESS,
+                            type: REQUEST_LOCATIONS_SUCCESS,
                             payload: data.locations
                         })
                         break;
                     case "characters":
                         dispatch({
-                            type: REQUEST_SUCCESS,
+                            type: REQUEST_CHARACTERS_SUCCESS,
                             payload: data.characters
                         })
                         break;
