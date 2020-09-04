@@ -5,10 +5,7 @@ UPDATE_NAME_BOX, ERASE_NAME_FIELD,
 UPDATE_TYPE_BOX, ERASE_TYPE_FIELD} from './ActionsType';
 
 
-
-//constants
-
-let initialData = { //reducer
+let initialData = { 
     fetching: false,
     arr: [],
     info: {},
@@ -21,12 +18,7 @@ let initialData = { //reducer
 
 
 
-//actions types en una carpeta y los importo - Boiler plate estructura base para proyecto desde 0
 
-//Reducer es otra cosa
-//Reducers
-//  --Actions
-//  --ActionsType
 export default function reducer(state = initialData, action) {
     switch (action.type) {
         case ERASE_STORE:
@@ -55,5 +47,4 @@ export default function reducer(state = initialData, action) {
 
 }
 
-//Actions 
 

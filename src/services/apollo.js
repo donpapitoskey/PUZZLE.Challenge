@@ -1,6 +1,6 @@
 import ApolloClient from 'apollo-boost';
 
-let client = new ApolloClient({ //sobre service en otro archivo
+let client = new ApolloClient({ 
     uri: "https://rickandmortyapi.com/graphql"
 });
 
