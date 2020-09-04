@@ -3,6 +3,7 @@ import classes from "./modal.module.css";
 import Backdrop from './Backdrop';
 import Auxcard from '../auxcard/Auxcard';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
 class Modal extends Component {
 
@@ -28,7 +29,7 @@ class Modal extends Component {
             <h3>Residents:</h3>
             <div className={classes.aux_container}>
               {residents.slice(0,5).map(element => (
-                <Auxcard value={element} />
+                <Auxcard name={element.name} />
               ))}
             </div>
           </div>
@@ -53,7 +54,7 @@ class Modal extends Component {
             <div> Characters</div>
             <div className={classes.aux_container}>
               {chars.slice(0,5).map(element => (
-                <Auxcard value = {element} />
+                <Auxcard name = {element.name} />
               ))}
             </div>
           </div>
@@ -86,6 +87,23 @@ class Modal extends Component {
     }
   }
 };
+
+Modal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  modalClosed: PropTypes.func.isRequired,
+  value: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    dimension: PropTypes.string,
+    image: PropTypes.string,
+    gender: PropTypes.string,
+    species: PropTypes.string,
+    episode: PropTypes.string,
+    created: PropTypes.string
+  }),
+  chars: PropTypes.arrayOf(PropTypes.string),
+  residents: PropTypes.arrayOf(PropTypes.string)
+}
 
 function mapStateToProps(store) {
   return {

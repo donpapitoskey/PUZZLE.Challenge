@@ -55,6 +55,19 @@ Card.propTypes = {
     episode: PropTypes.string,
     type: PropTypes.string,
     dimension: PropTypes.string,
-    //shape
+    image: PropTypes.string,
+    value: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        type: PropTypes.string,
+        dimension: PropTypes.string,
+        image: PropTypes.string,
+        gender: PropTypes.string,
+        species: PropTypes.string,
+        episode: PropTypes.string,
+        created: PropTypes.string,
+        residents: PropTypes.arrayOf(PropTypes.string),
+        characters: PropTypes.arrayOf(PropTypes.string)
+
+    })
 }
 

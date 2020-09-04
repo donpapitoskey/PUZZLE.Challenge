@@ -17,10 +17,10 @@ export default class Auxcard extends Component {
     };
 
     render() {
-        let { value } = this.props
+        let { name } = this.props
         return (
             <div className={styles.container} onClick={this.modalHandler}>
-                <h3>{value.name ? value.name : "None"}</h3>
+                <h3>{name ? name : "None"}</h3>
             </div>
         )
 
@@ -30,9 +30,5 @@ export default class Auxcard extends Component {
 }
 
 Auxcard.propTypes = {
-    name: PropTypes.string.isRequired,
-    created: PropTypes.string,
-    episode: PropTypes.string,
-    type: PropTypes.string,
-    dimension: PropTypes.string
+    name: PropTypes.string.isRequired
 }
