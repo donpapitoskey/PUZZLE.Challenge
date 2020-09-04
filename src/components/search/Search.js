@@ -34,9 +34,18 @@ class Search extends Component {
         this.props.updateTypeAction(event.target.value)
     }
 
+    handleSearchClicked = () => {
+        const { cleanErrorAction, setPageAction, getSearchAction, name, type } = this.props
+        if (name.length > 2 || type.length > 2) {
+            cleanErrorAction();
+            setPageAction(1);
+            getSearchAction();
+        }
+    }
+
     enterPressed = (event) => {
-        const { cleanErrorAction, setPageAction, getSearchAction } = this.props
-        if (event.keyCode === 13 && (this.props.name.length > 2 || this.props.type.length > 2)) {
+        const { cleanErrorAction, setPageAction, getSearchAction, name, type } = this.props
+        if (event.keyCode === 13 && (name.length > 2 || type.length > 2)) {
             cleanErrorAction();
             setPageAction(1);
             getSearchAction();
@@ -88,7 +97,7 @@ class Search extends Component {
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="start">
-                                    <SearchIcon />
+                                    <div onClick={smallScreen ? this.handleSearchClicked : null}><SearchIcon /></div>
                                 </InputAdornment>
                             )
                         }}
@@ -107,7 +116,7 @@ class Search extends Component {
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="start">
-                                    <SearchIcon />
+                                    <div onClick={smallScreen ? this.handleSearchClicked : null}><SearchIcon /></div>
                                 </InputAdornment>
                             )
                         }}

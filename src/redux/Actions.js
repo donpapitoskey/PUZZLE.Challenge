@@ -34,7 +34,7 @@ export let updateTypeAction = (updatedType) => (dispatch, getState) => {
 }
 
 export let updateNameAction = (updatedName) => (dispatch, getState) => {
-    console.log(updatedName)
+    
     dispatch({
         type: UPDATE_NAME_BOX,
         payload: updatedName
@@ -42,7 +42,7 @@ export let updateNameAction = (updatedName) => (dispatch, getState) => {
 }
 
 export let cleanErrorAction = () => (dispatch, getState) => {
-    console.log("Here it was")
+    
     dispatch({
         type: CLEAN_ERROR,
         payload: []
