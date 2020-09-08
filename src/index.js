@@ -5,14 +5,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import generateStore from './redux/store';
-import ApolloClient from 'apollo-boost';
+import client from './services/apollo';
 import { ApolloProvider } from 'react-apollo';
 
 const store = generateStore();
 
-const client = new ApolloClient({
-  uri: "https://rickandmortyapi.com/graphql"
-})
+
 
 const WithStore = () => <Provider store={store}><App /></Provider>
 const WithApollo = () => <ApolloProvider client={client}><WithStore /></ApolloProvider>
