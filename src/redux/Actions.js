@@ -11,6 +11,8 @@ import {
 
 import { gql } from 'apollo-boost';
 
+
+
 export let eraseNameFieldAction = () => (dispatch, getState) => {
     dispatch({
         type: ERASE_NAME_FIELD,
@@ -34,7 +36,7 @@ export let updateTypeAction = (updatedType) => (dispatch, getState) => {
 }
 
 export let updateNameAction = (updatedName) => (dispatch, getState) => {
-    
+
     dispatch({
         type: UPDATE_NAME_BOX,
         payload: updatedName
@@ -42,7 +44,7 @@ export let updateNameAction = (updatedName) => (dispatch, getState) => {
 }
 
 export let cleanErrorAction = () => (dispatch, getState) => {
-    
+
     dispatch({
         type: CLEAN_ERROR,
         payload: []
@@ -161,7 +163,7 @@ export function getSearchAction() {
                             payload: data.episodes,
                             searchParams: {
                                 name: searchName
-                             }
+                            }
                         })
                         break
                     case "locations":
@@ -171,7 +173,7 @@ export function getSearchAction() {
                             searchParams: {
                                 name: searchName,
                                 type: searchType
-                             }
+                            }
                         })
                         break;
                     case "characters":
@@ -181,7 +183,7 @@ export function getSearchAction() {
                             searchParams: {
                                 name: searchName,
                                 type: searchType
-                             }
+                            }
                         })
                         break;
                     default:

@@ -23,9 +23,17 @@ let initialData = {
     searchName: '',
     searchType: "",
     error: "clean",
-    searchParamsCharacters: {},
-    searchParamsLocations: {},
-    searchParamsEpisodes: {}
+    searchParamsCharacters: {
+        name: '',
+        type: ''
+    },
+    searchParamsLocations: {
+        name: '',
+        type: ''
+    },
+    searchParamsEpisodes: {
+        name: ''
+    }
 }
 
 

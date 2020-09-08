@@ -39,9 +39,9 @@ class Lister extends Component {
 
             return (
                 <div className={styles.listerContainer}>
-                    <h2>{searchWords.name && !searchWords.type ? `Return for search: Name = "${searchWords.name}"`:null}</h2>
-                    <h2>{searchWords.type && !searchWords.name  ? `Return for search: Type = "${searchWords.type}"`:null}</h2>
-                    <h2>{searchWords.name && searchWords.type ? `Return for search: Name = "${searchWords.name}" and Type = ${searchWords.type}`:null}</h2>
+                    {searchWords.name && !searchWords.type ? <h3 style={{textAlign:"center"}}>Results for search: Name = "{searchWords.name}"</h3> : null}
+                    {searchWords.type && !searchWords.name ? <h3 style={{textAlign:"center"}}>Results for search: Type = "{searchWords.type}"</h3> : null}
+                    {searchWords.name && searchWords.type ? <h3 style={{textAlign:"center"}}>Results for search: Name = "{searchWords.name}" and Type = "{searchWords.type}"</h3> : null}
                     <div className={styles.container} >
 
                         {retrievedArray.map(element => (

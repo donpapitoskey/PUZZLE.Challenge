@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import styles from './search.module.css';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
@@ -15,8 +15,8 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            nameInput: '',
-            typeInput: ''
+            nameInput: props.name,
+            typeInput: props.type
         }
     }
 
@@ -80,10 +80,40 @@ class Search extends Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        let { filterOption, searchParamsLocations, searchParamsEpisodes, searchParamsCharacters } = this.props;
+        if (prevProps.filterOption !== filterOption) {
+            switch (filterOption) {
+                case "locations":
+                    this.setState({
+                        typeInput: searchParamsLocations.type,
+                        nameInput: searchParamsLocations.name
+                    })
+                    break;
+                case "characters":
+                    this.setState({
+                        typeInput: searchParamsCharacters.type,
+                        nameInput: searchParamsCharacters.name
+                    })
+                    break;
+                case "episodes":
+                    this.setState({
+                        nameInput: searchParamsEpisodes.name
+                    })
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+    }
+
     render() {
 
         let { smallScreen, name, type, filterOption } = this.props;
         let { nameInput, typeInput } = this.state;
+
 
         return (
             <div className={styles.container} style={{
@@ -97,7 +127,7 @@ class Search extends Component {
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="start">
-                                    <div style={{cursor: 'pointer'}} onClick={smallScreen ? this.handleSearchClicked : null}><SearchIcon /></div>
+                                    <div style={{ cursor: 'pointer' }} onClick={smallScreen ? this.handleSearchClicked : null}><SearchIcon /></div>
                                 </InputAdornment>
                             )
                         }}
@@ -137,7 +167,10 @@ function mapStateToProps(store) {
     return {
         name: store.search.searchName,
         type: store.search.searchType,
-        filterOption: store.search.typeOfSearch
+        filterOption: store.search.typeOfSearch,
+        searchParamsLocations: store.search.searchParamsLocations,
+        searchParamsEpisodes: store.search.searchParamsEpisodes,
+        searchParamsCharacters: store.search.searchParamsCharacters
     }
 }
 

@@ -2,20 +2,36 @@ import React, { Component } from 'react'
 import styles from './filter.module.css'
 import Backdrop from '../modal/Backdrop';
 import { connect } from 'react-redux';
-import { setFilterAction, getSearchAction, cleanErrorAction } from '../../redux/Actions';
+import { setFilterAction, updateNameAction, updateTypeAction, getSearchAction, cleanErrorAction } from '../../redux/Actions';
 
 class Filter extends Component {
+lejania
 
-    
     handleOptionChange = changeEvent => {
-        let {setFilterAction, modalClosed, cleanErrorAction} = this.props;
+        let { searchParamsLocations, searchParamsEpisodes, searchParamsCharacters, updateTypeAction, updateNameAction, setFilterAction, modalClosed, cleanErrorAction } = this.props;
+        let value = changeEvent.target.value;
         cleanErrorAction();
         setFilterAction(changeEvent.target.value);
+        switch (value) {
+            case "locations":
+                updateNameAction(searchParamsLocations.name);
+                updateTypeAction(searchParamsLocations.type);
+                break;
+            case "characters":
+                updateNameAction(searchParamsCharacters.name);
+                updateTypeAction(searchParamsCharacters.type);
+                break;
+            case "episodes":
+                updateNameAction(searchParamsEpisodes.name);
+                break;
+            default:
+                break;
+        }
         modalClosed();
     };
 
     render() {
-        let {filterOption, small, show, modalClosed} = this.props
+        let { filterOption, small, show, modalClosed } = this.props
         return (
             <div>
                 <div className={small ? styles.containerSmall : styles.container}
@@ -24,7 +40,7 @@ class Filter extends Component {
                             'translateX(-100vh)',
                         opacity: show ? 1 : 0
                     }}
-                    >
+                >
                     <h3>Filters</h3>
                     <label>
                         <input
@@ -64,8 +80,11 @@ class Filter extends Component {
 
 function mapStateToProps(store) {
     return {
-        filterOption: store.search.typeOfSearch
+        filterOption: store.search.typeOfSearch,
+        searchParamsLocations: store.search.searchParamsLocations,
+        searchParamsEpisodes: store.search.searchParamsEpisodes,
+        searchParamsCharacters: store.search.searchParamsCharacters
     }
 };
 
-export default connect(mapStateToProps, { setFilterAction, getSearchAction, cleanErrorAction })(Filter);
+export default connect(mapStateToProps, { updateNameAction, updateTypeAction, setFilterAction, getSearchAction, cleanErrorAction })(Filter);
