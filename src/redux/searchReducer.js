@@ -22,7 +22,10 @@ let initialData = {
     searchingPage: 1,
     searchName: '',
     searchType: "",
-    error: "clean"
+    error: "clean",
+    searchParamsCharacters: {},
+    searchParamsLocations: {},
+    searchParamsEpisodes: {}
 }
 
 
@@ -37,11 +40,11 @@ export default function reducer(state = initialData, action) {
         case REQUEST_ERROR:
             return { ...state, fetching: false, error: action.payload }
         case REQUEST_CHARACTERS_SUCCESS:
-            return { ...state, fetching: false, arrChars: action.payload.results, infoChars: action.payload.info }
+            return { ...state, fetching: false, arrChars: action.payload.results, infoChars: action.payload.info, searchParamsCharacters: action.searchParams }
         case REQUEST_LOCATIONS_SUCCESS:
-            return { ...state, fetching: false, arrLoc: action.payload.results, infoLoc: action.payload.info }
+            return { ...state, fetching: false, arrLoc: action.payload.results, infoLoc: action.payload.info, searchParamsLocations: action.searchParams }
         case REQUEST_EPISODES_SUCCESS:
-            return { ...state, fetching: false, arrEp: action.payload.results, infoEp: action.payload.info }
+            return { ...state, fetching: false, arrEp: action.payload.results, infoEp: action.payload.info, searchParamsEpisodes: action.searchParams }
         case FILTER_CHANGED:
             return { ...state, typeOfSearch: action.payload, searchingPage: 1 }
         case PAGE_CHANGED:

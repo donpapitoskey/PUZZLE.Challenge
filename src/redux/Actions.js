@@ -158,19 +158,30 @@ export function getSearchAction() {
                     case "episodes":
                         dispatch({
                             type: REQUEST_EPISODES_SUCCESS,
-                            payload: data.episodes
+                            payload: data.episodes,
+                            searchParams: {
+                                name: searchName
+                             }
                         })
                         break
                     case "locations":
                         dispatch({
                             type: REQUEST_LOCATIONS_SUCCESS,
-                            payload: data.locations
+                            payload: data.locations,
+                            searchParams: {
+                                name: searchName,
+                                type: searchType
+                             }
                         })
                         break;
                     case "characters":
                         dispatch({
                             type: REQUEST_CHARACTERS_SUCCESS,
-                            payload: data.characters
+                            payload: data.characters,
+                            searchParams: {
+                                name: searchName,
+                                type: searchType
+                             }
                         })
                         break;
                     default:
