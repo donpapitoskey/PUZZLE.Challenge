@@ -77,7 +77,7 @@ export function getSearchAction() {
     return (dispatch, getState) => {
 
 
-        let { typeOfSearch, searchingPage, searchName, searchType } = getState().search;
+        const { typeOfSearch, searchingPage, searchName, searchType } = getState().search;
         let searchCriteria = '';
         let requestProps = ``
         switch (typeOfSearch) {

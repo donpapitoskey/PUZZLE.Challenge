@@ -17,7 +17,7 @@ export default class Auxcard extends Component {
     };
 
     render() {
-        let { name } = this.props
+        const { name } = this.props
         return (
             <div className={styles.container} onClick={this.modalHandler}>
                 <h3>{name ? name : "None"}</h3>

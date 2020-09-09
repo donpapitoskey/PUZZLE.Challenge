@@ -21,8 +21,8 @@ export default class Card extends Component {
 
 
     render() {
-        let { modalToggle } = this.state;
-        let { name, created, type, episode, dimension, image, value } = this.props;
+        const { modalToggle } = this.state;
+        const { name, created, type, episode, dimension, image, value } = this.props;
         return (
             <div>
                 <div className={styles.container} onClick={this.modalHandler}>

@@ -10,7 +10,7 @@ class Modal extends Component {
   render() {
 
 
-    let { dimension, created, gender, species, episode, name, type, image, typeOfSearch, residents, show, modalClosed, chars } = this.props;
+    const { dimension, created, gender, species, episode, name, type, image, typeOfSearch, residents, show, modalClosed, chars } = this.props;
 
     if (typeOfSearch === "locations") {
 

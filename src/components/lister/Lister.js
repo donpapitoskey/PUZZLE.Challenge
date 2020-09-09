@@ -9,7 +9,7 @@ class Lister extends Component {
 
 
     render() {
-        let { searchParamsLocations, searchParamsEpisodes, searchParamsCharacters, fetching, err, characters, filterOption, locations, episodes } = this.props;
+        const { searchParamsLocations, searchParamsEpisodes, searchParamsCharacters, fetching, err, characters, filterOption, locations, episodes } = this.props;
         let retrievedArray = [];
         let searchWords = {};
         switch (filterOption) {

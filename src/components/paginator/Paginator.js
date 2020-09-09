@@ -9,13 +9,13 @@ class Paginator extends Component {
 
 
     handleChange = (props, value) => {
-        let {setPageAction, getSearchAction} = this.props;
+        const {setPageAction, getSearchAction} = this.props;
         setPageAction(value);
         getSearchAction();
     }
 
     render() {
-        let { infoChars, infoLoc, infoEp, page, filterOption } = this.props;
+        const { infoChars, infoLoc, infoEp, page, filterOption } = this.props;
         let info = {};
         switch (filterOption) {
             case "locations":

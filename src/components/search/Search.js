@@ -81,7 +81,7 @@ class Search extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        let { filterOption, searchParamsLocations, searchParamsEpisodes, searchParamsCharacters } = this.props;
+        const { filterOption, searchParamsLocations, searchParamsEpisodes, searchParamsCharacters } = this.props;
         if (prevProps.filterOption !== filterOption) {
             switch (filterOption) {
                 case "locations":
@@ -111,8 +111,8 @@ class Search extends Component {
 
     render() {
 
-        let { smallScreen, name, type, filterOption } = this.props;
-        let { nameInput, typeInput } = this.state;
+        const { smallScreen, name, type, filterOption } = this.props;
+        const { nameInput, typeInput } = this.state;
 
 
         return (

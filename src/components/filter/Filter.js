@@ -8,7 +8,7 @@ class Filter extends Component {
 lejania
 
     handleOptionChange = changeEvent => {
-        let { searchParamsLocations, searchParamsEpisodes, searchParamsCharacters, updateTypeAction, updateNameAction, setFilterAction, modalClosed, cleanErrorAction } = this.props;
+        const { searchParamsLocations, searchParamsEpisodes, searchParamsCharacters, updateTypeAction, updateNameAction, setFilterAction, modalClosed, cleanErrorAction } = this.props;
         let value = changeEvent.target.value;
         cleanErrorAction();
         setFilterAction(changeEvent.target.value);
@@ -31,7 +31,7 @@ lejania
     };
 
     render() {
-        let { filterOption, small, show, modalClosed } = this.props
+        const { filterOption, small, show, modalClosed } = this.props
         return (
             <div>
                 <div className={small ? styles.containerSmall : styles.container}
