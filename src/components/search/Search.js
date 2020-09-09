@@ -127,7 +127,7 @@ class Search extends Component {
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="start">
-                                    <div style={{ cursor: 'pointer' }} onClick={smallScreen ? this.handleSearchClicked : null}><SearchIcon /></div>
+                                    <div style={{ cursor: 'pointer' }} onClick={this.handleSearchClicked }><SearchIcon /></div>
                                 </InputAdornment>
                             )
                         }}
