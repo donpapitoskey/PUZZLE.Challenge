@@ -58,11 +58,9 @@ class Search extends Component {
             nameInput: ''
         })
         eraseNameFieldAction();
-        if (type.lenght > 2) {
+        cleanErrorAction();
+        if (type.length > 2) {
             getSearchAction();
-        }
-        else {
-            cleanErrorAction();
         }
     }
 
@@ -72,11 +70,10 @@ class Search extends Component {
             typeInput: ''
         })
         eraseTypeFieldAction();
+        cleanErrorAction();
         if (name.length > 2) {
+            
             getSearchAction();
-        }
-        else {
-            cleanErrorAction();
         }
     }
 

@@ -35,7 +35,14 @@ class Lister extends Component {
                 </div>
             )
         }
-        if (retrievedArray && err === "clean") {
+        if (err !== "clean") {
+            return (
+                <div className={styles.containerError}>
+                    <h2>Sorry Morty. Your search could not be achieved :(</h2>
+                    <h3>Give it another try with new values :D</h3>
+                </div>)
+        }
+      
 
             return (
                 <div className={styles.listerContainer}>
@@ -57,17 +64,10 @@ class Lister extends Component {
                         ))}
                     </div>
                 </div>
-            )
-        }
-        if (err !== "clean") {
-            return (
-                <div className={styles.containerError}>
-                    <h2>Sorry Morty. Your search could not be achieved :(</h2>
-                    <h3>Give it another try with new values :D</h3>
-                </div>)
-        }
+            );
+    
 
-    }
+    };
 };
 
 function mapStateToProps(store) {
