@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/PUZZLE.Challenge/static/css/main.0df577b6.chunk.css",
-    "main.js": "/PUZZLE.Challenge/static/js/main.f26e448e.chunk.js",
-    "main.js.map": "/PUZZLE.Challenge/static/js/main.f26e448e.chunk.js.map",
+    "main.js": "/PUZZLE.Challenge/static/js/main.12c63aa3.chunk.js",
+    "main.js.map": "/PUZZLE.Challenge/static/js/main.12c63aa3.chunk.js.map",
     "runtime-main.js": "/PUZZLE.Challenge/static/js/runtime-main.52295115.js",
     "runtime-main.js.map": "/PUZZLE.Challenge/static/js/runtime-main.52295115.js.map",
     "static/js/2.93aec2aa.chunk.js": "/PUZZLE.Challenge/static/js/2.93aec2aa.chunk.js",
     "static/js/2.93aec2aa.chunk.js.map": "/PUZZLE.Challenge/static/js/2.93aec2aa.chunk.js.map",
     "index.html": "/PUZZLE.Challenge/index.html",
-    "precache-manifest.08a6ecee6b069205c0309509a763afe0.js": "/PUZZLE.Challenge/precache-manifest.08a6ecee6b069205c0309509a763afe0.js",
+    "precache-manifest.e9e0aa3d79f0ac19a0783bc74f2ebd0e.js": "/PUZZLE.Challenge/precache-manifest.e9e0aa3d79f0ac19a0783bc74f2ebd0e.js",
     "service-worker.js": "/PUZZLE.Challenge/service-worker.js",
     "static/css/main.0df577b6.chunk.css.map": "/PUZZLE.Challenge/static/css/main.0df577b6.chunk.css.map",
     "static/js/2.93aec2aa.chunk.js.LICENSE.txt": "/PUZZLE.Challenge/static/js/2.93aec2aa.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.52295115.js",
     "static/js/2.93aec2aa.chunk.js",
     "static/css/main.0df577b6.chunk.css",
-    "static/js/main.f26e448e.chunk.js"
+    "static/js/main.12c63aa3.chunk.js"
   ]
 }
