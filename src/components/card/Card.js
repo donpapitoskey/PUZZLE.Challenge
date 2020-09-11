@@ -30,7 +30,7 @@ export default class Card extends Component {
                     <label>
                         <h3> {name ? name : null} </h3>
                         <p>{created ? created : null}</p>
-                        <h4>{type && !image ? this.props.type : null}</h4>
+                        <h4>{type && !image ? type : null}</h4>
                         <p>{episode ? episode : null}</p>
                         <p>{dimension ? dimension : null}</p>
                     </label>
