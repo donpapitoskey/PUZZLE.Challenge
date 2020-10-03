@@ -12,7 +12,7 @@ export default class Home extends Component {
         super(props);
         this.state = {
             windowWidth: 0,
-            modalFilter: false
+            modalFilter: false,
         };
         this.updateDimensions = this.updateDimensions.bind(this);
     }
@@ -20,9 +20,8 @@ export default class Home extends Component {
     modalFilterHandler = (event) => {
         event.preventDefault();
         this.setState({
-            modalFilter: !this.state.modalFilter
+            modalFilter: !this.state.modalFilter,
         });
-
     }
 
     componentDidMount() {
@@ -36,30 +35,23 @@ export default class Home extends Component {
 
     updateDimensions() {
         const windowWidth = window !== "undefined" ? window.innerWidth : 0;
-        
-
         this.setState({ windowWidth });
     }
 
     currDate = {
-        date: new Date().toLocaleDateString()
-    }
+        date: new Date().toLocaleDateString(),
+    };
 
     handleClick = () => {
         this.setState({
             modalFilter: !this.state.modalFilter
         })
-    }
-
-
+    };
 
     render() {
         const { windowWidth, modalFilter } = this.state;
-
         const isSmallScreen = windowWidth < 768;
-
         return (
-
             <div style={{ height: "100vh", width: "100vw" }}>
                 <div className={styles.searcher} style={{ height: isSmallScreen ? "20%" : null }}>
                     <div style={{ opacity: isSmallScreen ? 1 : 0 }}>
@@ -81,9 +73,7 @@ export default class Home extends Component {
                     <h3 > Juan J. Alarcon</h3>
                     <h3> {this.currDate.date}</h3>
                 </div>
-
             </div>
-        )
-    }
-}
-
+        );
+    };
+};

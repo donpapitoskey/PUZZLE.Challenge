@@ -22,7 +22,6 @@
     flex-wrap: wrap;
     overflow-y: scroll;
     background-color: rgb(233, 229, 233);
-
 }
 
 .container::-webkit-scrollbar {

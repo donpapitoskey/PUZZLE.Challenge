@@ -1,12 +1,9 @@
-import React, { Component } from 'react'
-import styles from './lister.module.css'
+import React, { Component } from 'react';
+import styles from './lister.module.css';
 import Card from '../card/Card';
 import { connect } from 'react-redux';
 
 class Lister extends Component {
-
-
-
 
     render() {
         const { searchParamsLocations, searchParamsEpisodes, searchParamsCharacters, fetching, err, characters, filterOption, locations, episodes } = this.props;
@@ -42,15 +39,12 @@ class Lister extends Component {
                     <h3>Give it another try with new values :D</h3>
                 </div>)
         }
-      
-
             return (
                 <div className={styles.listerContainer}>
-                    {searchWords.name && !searchWords.type ? <h3 style={{textAlign:"center"}}>Results for search: Name = "{searchWords.name}"</h3> : null}
-                    {searchWords.type && !searchWords.name ? <h3 style={{textAlign:"center"}}>Results for search: Type = "{searchWords.type}"</h3> : null}
-                    {searchWords.name && searchWords.type ? <h3 style={{textAlign:"center"}}>Results for search: Name = "{searchWords.name}" and Type = "{searchWords.type}"</h3> : null}
+                    {searchWords.name && !searchWords.type && <h3 style={{textAlign:"center"}}>Results for search: Name = "{searchWords.name}"</h3>}
+                    {searchWords.type && !searchWords.name && <h3 style={{textAlign:"center"}}>Results for search: Type = "{searchWords.type}"</h3>}
+                    {searchWords.name && searchWords.type && <h3 style={{textAlign:"center"}}>Results for search: Name = "{searchWords.name}" and Type = "{searchWords.type}"</h3>}
                     <div className={styles.container} >
-
                         {retrievedArray.map(element => (
                             <Card
                                 value={element}
@@ -65,8 +59,6 @@ class Lister extends Component {
                     </div>
                 </div>
             );
-    
-
     };
 };
 
@@ -80,10 +72,8 @@ function mapStateToProps(store) {
         err: store.search.error,
         searchParamsLocations: store.search.searchParamsLocations,
         searchParamsEpisodes: store.search.searchParamsEpisodes,
-        searchParamsCharacters: store.search.searchParamsCharacters
-    }
+        searchParamsCharacters: store.search.searchParamsCharacters,
+    };
 };
 
-export default connect(mapStateToProps)(Lister)
-
-
+export default connect(mapStateToProps)(Lister);

@@ -68,4 +68,3 @@ Card.propTypes = {
         characters: PropTypes.arrayOf(PropTypes.string),
     }),
 };
-
