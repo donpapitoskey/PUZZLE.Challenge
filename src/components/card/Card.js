@@ -8,17 +8,15 @@ import PropTypes from 'prop-types'
 export default class Card extends Component {
 
     state = {
-        modalToggle: false
-    }
+        modalToggle: false,
+    };
 
     modalHandler = (e) => {
         e.preventDefault();
         this.setState({
-            modalToggle: !this.state.modalToggle
+            modalToggle: !this.state.modalToggle,
         })
     };
-
-
 
     render() {
         const { modalToggle } = this.state;
@@ -26,15 +24,14 @@ export default class Card extends Component {
         return (
             <div>
                 <div className={styles.container} onClick={this.modalHandler}>
-
                     <label>
-                        <h3> {name ? name : null} </h3>
-                        <p>{created ? created : null}</p>
-                        <h4>{type && !image ? type : null}</h4>
-                        <p>{episode ? episode : null}</p>
-                        <p>{dimension ? dimension : null}</p>
+                        {name !== null && <h3>{name}</h3>}
+                        {created !== null && <p>{created}</p>}
+                        {type && !image && <h4>{type}</h4>}
+                        {episode !== null && <p>{episode}</p>}
+                        {dimension !== null && <p>{dimension}</p>}
                     </label>
-                    <img src={image ? image : null} height={image ? "200px" : null} />
+                    {image !== null && <img src={image} height={image ? "200px" : null} alt="" />}
                 </div>
                 <Modal show={modalToggle}
                     modalClosed={this.modalHandler}
@@ -49,12 +46,9 @@ export default class Card extends Component {
                     chars={value.characters ? value.characters : null}
                     residents={value.residents ? value.residents : null} />
             </div>
-        )
-
-    }
-
-
-}
+        );
+    };
+};
 
 Card.propTypes = {
     name: PropTypes.string.isRequired,
@@ -74,6 +68,6 @@ Card.propTypes = {
         created: PropTypes.string,
         residents: PropTypes.arrayOf(PropTypes.string),
         characters: PropTypes.arrayOf(PropTypes.string)
-    })
-}
+    }),
+};
 
