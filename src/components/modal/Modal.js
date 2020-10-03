@@ -9,7 +9,7 @@ class Modal extends Component {
 
   render() {
 
-    const { dimension, created, gender, species, episode, name, type, image, typeOfSearch, residents, show, modalClosed, chars } = this.props;
+    const { dimension, created, gender, species, episode, name, type, image, residents, show, modalClosed, chars } = this.props;
 
       return (
         <div className={classes.Modal}
@@ -75,7 +75,7 @@ Modal.propTypes = {
 
 function mapStateToProps(store) {
   return {
-    typeOfSearch: store.search.typeOfSearch
+    typeOfSearch: store.search.typeOfSearch,
   };
 };
 

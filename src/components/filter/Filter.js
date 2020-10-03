@@ -1,11 +1,16 @@
-import React, { Component } from 'react'
-import styles from './filter.module.css'
+import React, { Component } from 'react';
+import styles from './filter.module.css';
 import Backdrop from '../modal/Backdrop';
 import { connect } from 'react-redux';
-import { setFilterAction, updateNameAction, updateTypeAction, getSearchAction, cleanErrorAction } from '../../redux/Actions';
+import { setFilterAction,
+    updateNameAction,
+    updateTypeAction,
+    getSearchAction,
+    cleanErrorAction
+} from '../../redux/Actions';
+import PropTypes from 'prop-types';
 
 class Filter extends Component {
-lejania
 
     handleOptionChange = changeEvent => {
         const { searchParamsLocations, searchParamsEpisodes, searchParamsCharacters, updateTypeAction, updateNameAction, setFilterAction, modalClosed, cleanErrorAction } = this.props;
@@ -31,7 +36,7 @@ lejania
     };
 
     render() {
-        const { filterOption, small, show, modalClosed } = this.props
+        const { filterOption, small, show, modalClosed } = this.props;
         return (
             <div>
                 <div className={small ? styles.containerSmall : styles.container}
@@ -71,20 +76,24 @@ lejania
                 </label>
                 </div>
                 <Backdrop show={show && small} clicked={modalClosed} />
-
             </div>
-        )
-    }
+        );
+    };
+};
 
-}
+Filter.propTypes = {
+    modalClosed: PropTypes.func.isRequired,
+    show: PropTypes.bool.isRequired,
+    small: PropTypes.bool.isRequired,
+};
 
 function mapStateToProps(store) {
     return {
         filterOption: store.search.typeOfSearch,
         searchParamsLocations: store.search.searchParamsLocations,
         searchParamsEpisodes: store.search.searchParamsEpisodes,
-        searchParamsCharacters: store.search.searchParamsCharacters
-    }
+        searchParamsCharacters: store.search.searchParamsCharacters,
+    };
 };
 
 export default connect(mapStateToProps, { updateNameAction, updateTypeAction, setFilterAction, getSearchAction, cleanErrorAction })(Filter);

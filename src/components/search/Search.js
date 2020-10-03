@@ -3,12 +3,12 @@ import styles from './search.module.css';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import CancelIcon from '@material-ui/icons/Cancel'
-import { connect } from 'react-redux'
+import CancelIcon from '@material-ui/icons/Cancel';
+import { connect } from 'react-redux';
 import {
     getSearchAction, updateNameAction, updateTypeAction,
     cleanErrorAction, eraseNameFieldAction, eraseTypeFieldAction, setPageAction
-} from '../../redux/Actions'
+} from '../../redux/Actions';
 
 class Search extends Component {
 
@@ -17,65 +17,64 @@ class Search extends Component {
         this.state = {
             nameInput: props.name,
             typeInput: props.type
-        }
-    }
+        };
+    };
 
     nameFieldChanged = (event) => {
         this.setState({
-            nameInput: event.target.value
-        })
+            nameInput: event.target.value,
+        });
         this.props.updateNameAction(event.target.value);
-    }
+    };
 
     typeFieldChanged = (event) => {
         this.setState({
-            typeInput: event.target.value
-        })
-        this.props.updateTypeAction(event.target.value)
-    }
+            typeInput: event.target.value,
+        });
+        this.props.updateTypeAction(event.target.value);
+    };
 
     handleSearchClicked = () => {
-        const { cleanErrorAction, setPageAction, getSearchAction, name, type } = this.props
+        const { cleanErrorAction, setPageAction, getSearchAction, name, type } = this.props;
         if (name.length > 2 || type.length > 2) {
             cleanErrorAction();
             setPageAction(1);
             getSearchAction();
         }
-    }
+    };
 
     enterPressed = (event) => {
-        const { cleanErrorAction, setPageAction, getSearchAction, name, type } = this.props
+        const { cleanErrorAction, setPageAction, getSearchAction, name, type } = this.props;
         if (event.keyCode === 13 && (name.length > 2 || type.length > 2)) {
             cleanErrorAction();
             setPageAction(1);
             getSearchAction();
         }
-    }
+    };
 
     eraseName = () => {
         const { type, eraseNameFieldAction, getSearchAction, cleanErrorAction } = this.props;
         this.setState({
-            nameInput: ''
-        })
+            nameInput: '',
+        });
         eraseNameFieldAction();
         cleanErrorAction();
         if (type.length > 2) {
             getSearchAction();
         }
-    }
+    };
 
     eraseType = () => {
         const { name, eraseTypeFieldAction, getSearchAction, cleanErrorAction } = this.props;
         this.setState({
-            typeInput: ''
+            typeInput: '',
         })
         eraseTypeFieldAction();
         cleanErrorAction();
         if (name.length > 2) {
-            
             getSearchAction();
         }
-    }
+    };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         const { filterOption, searchParamsLocations, searchParamsEpisodes, searchParamsCharacters } = this.props;
@@ -84,33 +83,30 @@ class Search extends Component {
                 case "locations":
                     this.setState({
                         typeInput: searchParamsLocations.type,
-                        nameInput: searchParamsLocations.name
-                    })
+                        nameInput: searchParamsLocations.name,
+                    });
                     break;
                 case "characters":
                     this.setState({
                         typeInput: searchParamsCharacters.type,
-                        nameInput: searchParamsCharacters.name
-                    })
+                        nameInput: searchParamsCharacters.name,
+                    });
                     break;
                 case "episodes":
                     this.setState({
-                        nameInput: searchParamsEpisodes.name
-                    })
+                        nameInput: searchParamsEpisodes.name,
+                    });
                     break;
                 default:
                     break;
             }
-
         }
-
     }
 
     render() {
 
         const { smallScreen, name, type, filterOption } = this.props;
         const { nameInput, typeInput } = this.state;
-
 
         return (
             <div className={styles.container} style={{
@@ -157,7 +153,7 @@ class Search extends Component {
                 </div>}
             </div>
         )
-    }
+    };
 };
 
 function mapStateToProps(store) {
@@ -167,11 +163,11 @@ function mapStateToProps(store) {
         filterOption: store.search.typeOfSearch,
         searchParamsLocations: store.search.searchParamsLocations,
         searchParamsEpisodes: store.search.searchParamsEpisodes,
-        searchParamsCharacters: store.search.searchParamsCharacters
-    }
-}
+        searchParamsCharacters: store.search.searchParamsCharacters,
+    };
+};
 
 export default connect(mapStateToProps, {
     getSearchAction, updateNameAction, updateTypeAction, cleanErrorAction, eraseNameFieldAction
-    , eraseTypeFieldAction, setPageAction
-})(Search)
+    , eraseTypeFieldAction, setPageAction,
+})(Search);

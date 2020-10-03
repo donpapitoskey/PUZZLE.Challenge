@@ -1,14 +1,12 @@
 import React from 'react';
 import classes from './backdrop.module.css';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-const Backdrop = (props) => (
-    props.show ? <div className={classes.Backdrop} onClick={props.clicked} ></div> : null
-)
+const Backdrop = ({show,clicked}) => (show && <div className={classes.Backdrop} onClick={clicked} ></div>);
 
 Backdrop.propTypes = {
     show: PropTypes.bool.isRequired,
-    clicked: PropTypes.func.isRequired
-}
+    clicked: PropTypes.func.isRequired,
+};
 
-export default Backdrop
+export default Backdrop;

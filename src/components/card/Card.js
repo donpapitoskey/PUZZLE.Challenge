@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
-import styles from './card.module.css'
-import Modal from '../modal/Modal'
-import PropTypes from 'prop-types'
-
-
+import React, { Component } from 'react';
+import styles from './card.module.css';
+import Modal from '../modal/Modal';
+import PropTypes from 'prop-types';
 
 export default class Card extends Component {
 
@@ -67,7 +65,7 @@ Card.propTypes = {
         episode: PropTypes.string,
         created: PropTypes.string,
         residents: PropTypes.arrayOf(PropTypes.string),
-        characters: PropTypes.arrayOf(PropTypes.string)
+        characters: PropTypes.arrayOf(PropTypes.string),
     }),
 };
 

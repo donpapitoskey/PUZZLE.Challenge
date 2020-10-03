@@ -61,23 +61,16 @@ export default class Home extends Component {
         return (
 
             <div style={{ height: "100vh", width: "100vw" }}>
-
                 <div className={styles.searcher} style={{ height: isSmallScreen ? "20%" : null }}>
                     <div style={{ opacity: isSmallScreen ? 1 : 0 }}>
                         <ListIcon fontSize="large"
-
                             onClick={this.handleClick} />
                     </div>
                     <Search smallScreen={isSmallScreen} />
-
                 </div>
                 <div className={styles.container} >
-
                     <div className={isSmallScreen ? styles.side_filterClosed : styles.side_filter} >
-
                         <Filter modalClosed={this.handleClick} show={isSmallScreen ? modalFilter : true} small={isSmallScreen} />
-
-
                     </div>
                     <div className={styles.mainBlock} style={{ width: isSmallScreen ? "100%" : null }}>
                         <Lister />
